@@ -11,11 +11,13 @@ class SignupForm extends Component {
     super();
     
 		this.state = {
-      firstName: '',
-      lastName: '',
-			username: '',
-			password: '',
-			confirmPassword: '',
+      // firstName: '',
+      // lastName: '',
+      username: '',
+      emailAddress: '',
+      password: '',
+      confirmPassword: '',
+      userType: '',
 			redirectTo: null
 		};
   }
@@ -28,12 +30,15 @@ class SignupForm extends Component {
   
 	handleSubmit = (event) => {
 		event.preventDefault();
-		// TODO - validate!
+    // TODO - validate!
+    console.log(this.state)
 		AUTH.signup({
-      firstName: this.state.firstName,
-      lastName: this.state.lastName,
+      // firstName: this.state.firstName,
+      // lastName: this.state.lastName,
       username: this.state.username,
-      password: this.state.password
+      password: this.state.password,
+      emailAddress: this.state.emailAddress,
+      userType: this.state.userType
     }).then(response => {
       console.log(response);
       if (!response.data.errmsg) {
@@ -57,9 +62,9 @@ class SignupForm extends Component {
         <Row>
           <Col size="md-3"></Col>
           <Col size="md-6">
-            <Card title="Register for React Reading List">
+            <Card title="Register for GLAMoblie">
               <form style={{marginTop: 10}}>
-                <label htmlFor="username">First name: </label>
+                {/* <label htmlFor="username">First name: </label>
                 <Input
                   type="text"
                   name="firstName"
@@ -72,12 +77,19 @@ class SignupForm extends Component {
                   name="lastName"
                   value={this.state.lastName}
                   onChange={this.handleChange}
-                />
+                /> */}
                 <label htmlFor="username">Username: </label>
                 <Input
                   type="text"
                   name="username"
                   value={this.state.username}
+                  onChange={this.handleChange}
+                />
+                <label htmlFor="emailAddress">Email: </label>
+                <Input
+                  type="text"
+                  name="emailAddress"
+                  value={this.state.emailAddress}
                   onChange={this.handleChange}
                 />
                 <label htmlFor="password">Password: </label>
@@ -94,6 +106,19 @@ class SignupForm extends Component {
                   value={this.state.confirmPassword}
                   onChange={this.handleChange}
                 />
+                <label htmlFor="userType">Profile Type: </label>
+                <br></br>
+                <Input
+                  type="text"
+                  name="userType"
+                  value={this.state.userType}
+                  onChange={this.handleChange}
+                />
+                {/* <select name="userType">
+                  <option value="client">Client</option>
+                  <option value="stylist">Stylist</option>
+                </select>
+                <br></br> */}
                 <Link to="/">Login</Link>
                 <FormBtn onClick={this.handleSubmit}>Register</FormBtn>
               </form>
