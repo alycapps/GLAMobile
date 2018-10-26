@@ -11,7 +11,8 @@ class LoginForm extends Component {
     
 		this.state = {
 			username: '',
-			password: '',
+      password: '',
+      emailAddress: '',
 			redirectTo: null
 		};
 	}
@@ -47,6 +48,13 @@ class LoginForm extends Component {
                     type="text"
                     name="username"
                     value={this.state.username}
+                    onChange={this.handleChange}
+                  />
+									<label htmlFor="emailAddress">Email: </label>
+									<Input
+                    type="text"
+                    name="emailAddress"
+                    value={this.state.emailAddress}
                     onChange={this.handleChange}
                   />
                   <label htmlFor="password">Password: </label>

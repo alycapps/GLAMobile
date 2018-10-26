@@ -12,19 +12,28 @@ module.exports = {
     }
   },
   register: (req, res) => {
-    const { firstName, lastName, username, password } = req.body;
+    const { 
+      // firstName, 
+      // lastName, 
+      emailAddress,
+      username, 
+      password, 
+      userType
+    } = req.body;
     // ADD VALIDATION
-    db.User.findOne({ 'username': username }, (err, userMatch) => {
+    db.User.findOne({ 'emailAddress': emailAddress }, (err, userMatch) => {
       if (userMatch) {
         return res.json({
-          error: `Sorry, already a user with the username: ${username}`
+          error: `Sorry, already a user with the email: ${emailAddress}`
         });
       }
       const newUser = new db.User({
-        'firstName': firstName,
-        'lastName': lastName,
+        // 'firstName': firstName,
+        // 'lastName': lastName,
+        'emailAddress': emailAddress,
         'username': username,
-        'password': password
+        'password': password,
+        'userType' : userType
       });
       newUser.save((err, savedUser) => {
         if (err) return res.json(err);
