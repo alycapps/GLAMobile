@@ -4,6 +4,10 @@ import LoginForm from './pages/Auth/LoginForm';
 import SignupForm from './pages/Auth/SignupForm';
 import Nav from "./components/Nav";
 import Books from './pages/Books';
+import Client from './pages/Client';
+import Stylist from './pages/Stylist';
+import Search from './pages/Search';
+
 import Detail from "./pages/Detail";
 import NoMatch from "./pages/NoMatch";
 import AUTH from './utils/AUTH';
@@ -72,8 +76,12 @@ class App extends Component {
             <div className="main-view">
               <Switch>
                 <Route exact path="/" component={() => <Books user={this.state.user}/>} />
-                <Route exact path="/books" component={() => <Books user={this.state.user}/>} />
-                <Route exact path="/books/:id" component={Detail} />
+                <Route exact path="/client" component={() => <Client user={this.state.user}/>} />
+								<Route exact path="/client/:id" component={Detail} />
+								<Route exact path="/stylist" component={() => <Stylist user={this.state.user}/>} />
+								<Route exact path="/stylist/:id" component={Detail} />
+								<Route exact path="/search/:id" component={Detail} />
+								<Route exact path="/Search" component={() => <Search user={this.state.user}/>} />
                 <Route component={NoMatch} />
               </Switch>
             </div>
