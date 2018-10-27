@@ -3,7 +3,6 @@ import { Route, Switch } from 'react-router-dom';
 import LoginForm from './pages/Auth/LoginForm';
 import SignupForm from './pages/Auth/SignupForm';
 import Nav from "./components/Nav";
-import Books from './pages/Books';
 import Client from './pages/Client';
 import Stylist from './pages/Stylist';
 import Search from './pages/Search';
