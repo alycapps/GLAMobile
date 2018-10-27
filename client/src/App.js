@@ -23,6 +23,7 @@ class App extends Component {
   }
   
 	componentDidMount() {
+		console.log('component is mounting')
 		AUTH.getUser().then(response => {
 			console.log(response.data);
 			if (!!response.data.user) {
@@ -78,9 +79,10 @@ class App extends Component {
 									render={() => {
 										if (this.state.user.userType === 'client') {
 											return <Client user={this.state.user} />
+										} else if (this.state.user.userType === 'stylist') {
+											return <Stylist user={this.state.user} />
 										}
-
-										return <Stylist user={this.state.user} />
+										return <div>Something is wrong</div>
 									}}
 									/>
                 <Route exact path="/client" component={() => <Client user={this.state.user}/>} />
