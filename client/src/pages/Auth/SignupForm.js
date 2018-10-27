@@ -32,24 +32,31 @@ class SignupForm extends Component {
 		event.preventDefault();
     // TODO - validate!
     console.log(this.state)
-		AUTH.signup({
-      // firstName: this.state.firstName,
-      // lastName: this.state.lastName,
-      username: this.state.username,
-      password: this.state.password,
-      emailAddress: this.state.emailAddress,
-      userType: this.state.userType
-    }).then(response => {
-      console.log(response);
-      if (!response.data.errmsg) {
-        console.log('youre good');
-        this.setState({
-          redirectTo: '/'
-        });
-      } else {
-        console.log('duplicate');
-      }
-    });
+    if (this.state.username && this.state.password && this.state.emailAddress && this.state.userType) {
+      AUTH.signup({
+        // firstName: this.state.firstName,
+        // lastName: this.state.lastName,
+        username: this.state.username,
+        password: this.state.password,
+        emailAddress: this.state.emailAddress,
+        userType: this.state.userType
+        // userType: this.userType.val()
+      }).then(response => {
+        console.log(response);
+        if (!response.data.errmsg) {
+          console.log('youre good');
+          this.setState({
+            redirectTo: '/'
+          });
+        } else {
+          console.log('duplicate');
+        }
+      });
+    }
+    else {
+      alert("Please enter all fields")
+    }
+		
   }
   
 	render() {
@@ -108,17 +115,18 @@ class SignupForm extends Component {
                 />
                 <label htmlFor="userType">Profile Type: </label>
                 <br></br>
-                <Input
+                {/* <Input
                   type="text"
                   name="userType"
                   value={this.state.userType}
                   onChange={this.handleChange}
-                />
-                {/* <select name="userType">
-                  <option value="client">Client</option>
-                  <option value="stylist">Stylist</option>
+                /> */}
+                <select name="userType" onChange={this.handleChange} >
+                  <option name= "userType" value="none">Please select profile type.</option>
+                  <option name= "userType" value="client">Client</option>
+                  <option name= "userType" value="stylist">Stylist</option>
                 </select>
-                <br></br> */}
+                <br></br>
                 <Link to="/">Login</Link>
                 <FormBtn onClick={this.handleSubmit}>Register</FormBtn>
               </form>
