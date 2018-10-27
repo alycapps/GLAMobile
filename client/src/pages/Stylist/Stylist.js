@@ -7,6 +7,18 @@ import { Col, Row, Container } from "../../components/Grid";
 import { List, ListItem } from "../../components/List";
 import { Input, TextArea, FormBtn } from "../../components/Form";
 
+const styles = {
+  primaryColor: {
+    background: `#fbe9e7`,
+  },
+  secondaryColor: {
+    background: `#c8b7b5`,
+  },
+  anotherColor: {
+    background: `#ffffff`,
+  }
+}
+
 class Books extends Component {
   state = {
     books: [],
@@ -58,7 +70,7 @@ class Books extends Component {
       <Container fluid>
         <Row>
           <Col size="md-6">
-            <Jumbotron>
+            <Jumbotron style = {[styles.primaryColor]}>
               <h1>STYLIST PAGE</h1>
             </Jumbotron>
             <form>
@@ -89,7 +101,7 @@ class Books extends Component {
             </form>
           </Col>
           <Col size="md-6 sm-12">
-            <Jumbotron>
+            <Jumbotron style = {[styles.primaryColor]}>
               <h1>Books On My List</h1>
             </Jumbotron>
             {this.state.books.length ? (
