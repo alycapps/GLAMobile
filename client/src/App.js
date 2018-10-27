@@ -70,18 +70,35 @@ class App extends Component {
 	render() {
 		return (
 			<div className="App">
-        { this.state.loggedIn && (
+        { this.state.loggedIn && this.state.user.userType === "client" && (
           <div>
             <Nav user={this.state.user} logout={this.logout}/>
             <div className="main-view">
               <Switch>
-                <Route exact path="/" component={() => <Books user={this.state.user}/>} />
+                <Route exact path="/" component={() => <Client user={this.state.user}/>} />
                 <Route exact path="/client" component={() => <Client user={this.state.user}/>} />
 								<Route exact path="/client/:id" component={Detail} />
+								<Route exact path="/search/:id" component={Detail} />
+								<Route exact path="/search" component={() => <Search user={this.state.user}/>} />
 								<Route exact path="/stylist" component={() => <Stylist user={this.state.user}/>} />
 								<Route exact path="/stylist/:id" component={Detail} />
+                <Route component={NoMatch} />
+              </Switch>
+            </div>
+          </div>
+				)}
+				{ this.state.loggedIn && this.state.user.userType === "stylist" && (
+          <div>
+            <Nav user={this.state.user} logout={this.logout}/>
+            <div className="main-view">
+              <Switch>
+                <Route exact path="/" component={() => <Stylist user={this.state.user}/>} />
+                <Route exact path="/client" component={() => <Client user={this.state.user}/>} />
+								<Route exact path="/client/:id" component={Detail} />
 								<Route exact path="/search/:id" component={Detail} />
-								<Route exact path="/Search" component={() => <Search user={this.state.user}/>} />
+								<Route exact path="/search" component={() => <Search user={this.state.user}/>} />
+								<Route exact path="/stylist" component={() => <Stylist user={this.state.user}/>} />
+								<Route exact path="/stylist/:id" component={Detail} />
                 <Route component={NoMatch} />
               </Switch>
             </div>
@@ -92,6 +109,10 @@ class App extends Component {
             <Route exact path="/" component={() => <LoginForm login={this.login}/>} />
             <Route exact path="/books" component={() => <LoginForm user={this.login}/>} />
             <Route exact path="/signup" component={SignupForm} />
+						<Route exact path="/client" component={() => <LoginForm user={this.login}/>} />
+						<Route exact path="/stylist" component={() => <LoginForm user={this.login}/>} />
+						<Route exact path="/search" component={() => <LoginForm user={this.login}/>} />
+
           </div>
         )}
 			</div>
