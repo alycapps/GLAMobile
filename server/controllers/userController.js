@@ -6,7 +6,10 @@ module.exports = {
     console.log('===== user!!======');
     console.log(req.user);
     if (req.user) {
-      return res.json({ user: req.user });
+      db.User.findOne({ 'username': req.user.username }).then(user => {
+        console.log(user)
+        res.json({ user })
+      }).catch(err => console.log('whoops something messed up', err))
     } else {
       return res.json({ user: null });
     }

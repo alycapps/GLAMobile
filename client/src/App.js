@@ -23,6 +23,7 @@ class App extends Component {
   }
   
 	componentDidMount() {
+		console.log('component is mounting')
 		AUTH.getUser().then(response => {
 			console.log(response.data);
 			if (!!response.data.user) {
@@ -69,12 +70,21 @@ class App extends Component {
 	render() {
 		return (
 			<div className="App">
-        { this.state.loggedIn && this.state.user.userType === "client" && (
+        { this.state.loggedIn && (
           <div>
             <Nav user={this.state.user} logout={this.logout}/>
             <div className="main-view">
               <Switch>
-                <Route exact path="/" component={() => <Client user={this.state.user}/>} />
+								<Route exact path="/" 
+									render={() => {
+										if (this.state.user.userType === 'client') {
+											return <Client user={this.state.user} />
+										} else if (this.state.user.userType === 'stylist') {
+											return <Stylist user={this.state.user} />
+										}
+										return <div>Something is wrong</div>
+									}}
+									/>
                 <Route exact path="/client" component={() => <Client user={this.state.user}/>} />
 								<Route exact path="/client/:id" component={Detail} />
 								<Route exact path="/search/:id" component={Detail} />
@@ -86,23 +96,6 @@ class App extends Component {
             </div>
           </div>
 				)}
-				{ this.state.loggedIn && this.state.user.userType === "stylist" && (
-          <div>
-            <Nav user={this.state.user} logout={this.logout}/>
-            <div className="main-view">
-              <Switch>
-                <Route exact path="/" component={() => <Stylist user={this.state.user}/>} />
-                <Route exact path="/client" component={() => <Client user={this.state.user}/>} />
-								<Route exact path="/client/:id" component={Detail} />
-								<Route exact path="/search/:id" component={Detail} />
-								<Route exact path="/search" component={() => <Search user={this.state.user}/>} />
-								<Route exact path="/stylist" component={() => <Stylist user={this.state.user}/>} />
-								<Route exact path="/stylist/:id" component={Detail} />
-                <Route component={NoMatch} />
-              </Switch>
-            </div>
-          </div>
-        )}
         { !this.state.loggedIn && (
           <div className="auth-wrapper" style={{paddingTop:40}}>
             <Route exact path="/" component={() => <LoginForm login={this.login}/>} />
