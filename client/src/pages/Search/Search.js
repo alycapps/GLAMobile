@@ -1,11 +1,13 @@
 import React, { Component } from "react";
 import DeleteBtn from "../../components/DeleteBtn";
-import Jumbotron from "../../components/Jumbotron";
+// import Jumbotron from "../../components/Jumbotron";
 import API from "../../utils/API";
 import { Link } from "react-router-dom";
 import { Col, Row, Container } from "../../components/Grid";
 import { List, ListItem } from "../../components/List";
-import { Input, TextArea, FormBtn } from "../../components/Form";
+// import { Input, TextArea, FormBtn } from "../../components/Form";
+import { Input, FormBtn } from "../../components/Form";
+
 
 class Books extends Component {
   state = {
@@ -58,40 +60,57 @@ class Books extends Component {
       <Container fluid>
         <Row>
           <Col size="md-6">
-            <Jumbotron>
+            {/* <Jumbotron>
               <h1>SEARCH PAGE</h1>
-            </Jumbotron>
+            </Jumbotron> */}
+            <h3>Search Criteria</h3>
             <form>
+            <label htmlFor="serviceType">Hair</label>
+              <Input 
+                type="checkbox" 
+                name="serviceType" 
+                value="hair"
+              />
+             <label htmlFor="serviceType">Makeup</label>
+              <Input 
+                type="checkbox" 
+                name="serviceType" 
+                value="makeup"
+              />
+              <label htmlFor="serviceType">Nails</label>
+              <Input 
+                type="checkbox" 
+                name="serviceType" 
+                value="nails" 
+              />
               <Input
                 value={this.state.title}
                 onChange={this.handleInputChange}
-                name="title"
-                placeholder="Title (required)"
+                name="minPrice"
+                placeholder="Minimum Price ($)"
               />
               <Input
-                value={this.state.author}
+                value={this.state.title}
                 onChange={this.handleInputChange}
-                name="author"
-                placeholder="Author (required)"
+                name="maxPrice"
+                placeholder="Maximum Price ($)"
               />
-              <TextArea
-                value={this.state.synopsis}
+              <Input
+                value={this.state.title}
                 onChange={this.handleInputChange}
-                name="synopsis"
-                placeholder="Synopsis (Optional)"
+                name="zip"
+                placeholder="Zip Code"
               />
               <FormBtn
                 disabled={!(this.state.author && this.state.title)}
                 onClick={this.handleFormSubmit}
               >
-                Submit Book
+                Search
               </FormBtn>
             </form>
           </Col>
           <Col size="md-6 sm-12">
-            <Jumbotron>
-              <h1>Books On My List</h1>
-            </Jumbotron>
+            <h3>Please select a Stylist to view their profiles and book an appointment.</h3>
             {this.state.books.length ? (
               <List>
                 {this.state.books.map(book => (
@@ -106,7 +125,7 @@ class Books extends Component {
                 ))}
               </List>
             ) : (
-              <h3>No Results to Display</h3>
+              <h3>No Stylists Found - please try again.</h3>
             )}
           </Col>
         </Row>
