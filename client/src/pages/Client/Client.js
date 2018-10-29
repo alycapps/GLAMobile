@@ -1,23 +1,22 @@
 import React, { Component } from "react";
 import DeleteBtn from "../../components/DeleteBtn";
-import Jumbotron from "../../components/Jumbotron";
 import API from "../../utils/API";
 import { Link } from "react-router-dom";
 import { Col, Row, Container } from "../../components/Grid";
 import { List, ListItem } from "../../components/List";
-import { Input, TextArea, FormBtn } from "../../components/Form";
+// import { Input, TextArea, FormBtn } from "../../components/Form";
 
-const styles = {
-  primaryColor: {
-    background: `#fbe9e7`,
-  },
-  secondaryColor: {
-    background: `#c8b7b5`,
-  },
-  anotherColor: {
-    background: `#ffffff`,
-  }
-}
+// const styles = {
+//   primaryColor: {
+//     background: `#fbe9e7`,
+//   },
+//   secondaryColor: {
+//     background: `#c8b7b5`,
+//   },
+//   anotherColor: {
+//     background: `#ffffff`,
+//   }
+// }
 
 class Books extends Component {
   state = {
@@ -70,41 +69,9 @@ class Books extends Component {
       <Container fluid>
         <Row>
           <Col size="md-6">
-            <Jumbotron style = {[styles.primaryColor]}>
-              <h1>CLIENT PAGE</h1>
-            </Jumbotron>
             <form>
-              <Input
-                value={this.state.title}
-                onChange={this.handleInputChange}
-                name="title"
-                placeholder="Title (required)"
-              />
-              <Input
-                value={this.state.author}
-                onChange={this.handleInputChange}
-                name="author"
-                placeholder="Author (required)"
-              />
-              <TextArea
-                value={this.state.synopsis}
-                onChange={this.handleInputChange}
-                name="synopsis"
-                placeholder="Synopsis (Optional)"
-              />
-              <FormBtn
-                disabled={!(this.state.author && this.state.title)}
-                onClick={this.handleFormSubmit}
-              >
-                Submit Book
-              </FormBtn>
-            </form>
-          </Col>
-          <Col size="md-6 sm-12">
-            <Jumbotron style = {[styles.primaryColor]}>
-              <h1>Books On My List</h1>
-            </Jumbotron>
-            {this.state.books.length ? (
+              <h3>Upcoming Appointments</h3>
+              {this.state.books.length ? (
               <List>
                 {this.state.books.map(book => (
                   <ListItem key={book._id}>
@@ -118,8 +85,31 @@ class Books extends Component {
                 ))}
               </List>
             ) : (
-              <h3>No Results to Display</h3>
+              <h3>No Appointments Scheduled</h3>
             )}
+              <Link to="/search">
+                <button className="btn btn-success"> 
+                  Book a New Appointment
+                </button>
+              </Link>
+            </form>
+          </Col>
+          <Col size="md-6 sm-12">
+            <h3>My Profile</h3>
+            First Name:
+            <br></br>
+            Last Name:
+            <br></br>
+            Username:
+            <br></br>
+            Adress:
+            <br></br>
+            Apt:
+            <br></br>
+            City:
+            <br></br>
+            State:
+            <br></br>
           </Col>
         </Row>
       </Container>
