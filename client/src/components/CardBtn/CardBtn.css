@@ -14,7 +14,7 @@
 
 .pass {
   left: 1%;
-  background: #ffffff;
+  background: #E53935;
 }
 
 .pass::after {
@@ -23,7 +23,7 @@
 
 .pick {
   right: 1%;
-  background: #ffffff;
+  background: #43A047;
 }
 
 .pick::after {
