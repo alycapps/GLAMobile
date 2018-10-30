@@ -78,7 +78,7 @@ class Books extends Component {
             <form>
             <div class="dropdown">
             <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              Styist Pricing
+              Stylist Pricing
             </button>
             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
               <a class="dropdown-item" href="#">$25 - $50</a>
