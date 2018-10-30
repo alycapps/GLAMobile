@@ -6,7 +6,7 @@ import Nav from "./components/Nav";
 import Client from './pages/Client';
 import Stylist from './pages/Stylist';
 import Search from './pages/Search';
-
+import Calendar from "./pages/Calendar";
 import Detail from "./pages/Detail";
 import NoMatch from "./pages/NoMatch";
 import AUTH from './utils/AUTH';
@@ -91,6 +91,7 @@ class App extends Component {
 								<Route exact path="/search" component={() => <Search user={this.state.user}/>} />
 								<Route exact path="/stylist" component={() => <Stylist user={this.state.user}/>} />
 								<Route exact path="/stylist/:id" component={Detail} />
+								<Route exact path="/calendar" component={() => <Calendar user={this.state.user}/>} />
                 <Route component={NoMatch} />
               </Switch>
             </div>

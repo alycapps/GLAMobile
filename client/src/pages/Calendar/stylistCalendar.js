@@ -8,7 +8,6 @@ import { List, ListItem } from "../../components/List";
 // import { Input, TextArea, FormBtn } from "../../components/Form";
 import { Input, FormBtn } from "../../components/Form";
 import dateFns from "date-fns";
-// import Calendar from "./components/Calendar";
 // import "./stylistCalendar.css";
 
 class Calendar extends React.Component {
