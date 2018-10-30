@@ -97,6 +97,16 @@ class Books extends Component {
                 </button>
               </Link>
             </Jumbotron>
+            <div class="card">
+            <div class="form-group">
+              <label for="inputPassword6">License Number</label>
+              <input type="password" id="inputPassword6" class="form-control mx-sm-3" aria-describedby="passwordHelpInline">
+              <small id="passwordHelpInline" class="text-muted">
+                Must be 8-20 characters long.
+              </small>
+              </input>
+              </div>
+              </div>
             {this.state.books.length ? (
               <List>
                 {this.state.books.map(book => (
