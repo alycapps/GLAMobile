@@ -76,40 +76,37 @@ class Books extends Component {
               <h1>STYLIST PAGE</h1>
             </Jumbotron>
             <form>
-              <Input
-                value={this.state.title}
-                onChange={this.handleInputChange}
-                name="title"
-                placeholder="Title (required)"
-              />
-              <Input
-                value={this.state.author}
-                onChange={this.handleInputChange}
-                name="author"
-                placeholder="Author (required)"
-              />
-              <TextArea
-                value={this.state.synopsis}
-                onChange={this.handleInputChange}
-                name="synopsis"
-                placeholder="Synopsis (Optional)"
-              />
-              <FormBtn
-                disabled={!(this.state.author && this.state.title)}
-                onClick={this.handleFormSubmit}
-              >
-                Submit Book
-              </FormBtn>
+            <div class="dropdown">
+            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Stylist Pricing
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+              <a class="dropdown-item" href="#">$25 - $50</a>
+              <a class="dropdown-item" href="#">$50 - $75</a>
+              <a class="dropdown-item" href="#">$75 - 100</a>
+              <a class="dropdown-item" href="#">$100 - $150</a>
+            </div>
+          </div>
             </form>
           </Col>
           <Col size="md-6 sm-12">
             <Jumbotron style = {[styles.primaryColor]}>
-            <Link to="/Calendar/">
+            <Link to="/Calendar">
                 <button className="btn btn-success"> 
                   View My Scheduled Appointments
                 </button>
               </Link>
             </Jumbotron>
+            <div class="card">
+            <div class="form-group">
+              <label for="inputPassword6">License Number</label>
+              <input type="password" id="inputPassword6" class="form-control mx-sm-3" aria-describedby="passwordHelpInline">
+              <small id="passwordHelpInline" class="text-muted">
+                Must be 8-20 characters long.
+              </small>
+              </input>
+              </div>
+              </div>
             {this.state.books.length ? (
               <List>
                 {this.state.books.map(book => (
