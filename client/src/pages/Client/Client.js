@@ -4,6 +4,8 @@ import API from "../../utils/API";
 import { Link } from "react-router-dom";
 import { Col, Row, Container } from "../../components/Grid";
 import { List, ListItem } from "../../components/List";
+import ClientInfo from "../../components/Client";
+
 // import { Input, TextArea, FormBtn } from "../../components/Form";
 
 // const styles = {
@@ -23,7 +25,8 @@ class Books extends Component {
     books: [],
     title: "",
     author: "",
-    synopsis: ""
+    synopsis: "",
+    client: JSON.parse(localStorage.getItem('client'))
   };
 
   componentDidMount() {
@@ -95,21 +98,7 @@ class Books extends Component {
             </form>
           </Col>
           <Col size="md-6 sm-12">
-            <h3>My Profile</h3>
-            First Name:
-            <br></br>
-            Last Name:
-            <br></br>
-            Username:
-            <br></br>
-            Adress:
-            <br></br>
-            Apt:
-            <br></br>
-            City:
-            <br></br>
-            State:
-            <br></br>
+            <ClientInfo />
           </Col>
         </Row>
       </Container>
