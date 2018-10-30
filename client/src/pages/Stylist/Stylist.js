@@ -6,6 +6,8 @@ import { Link } from "react-router-dom";
 import { Col, Row, Container } from "../../components/Grid";
 import { List, ListItem } from "../../components/List";
 import { Input, TextArea, FormBtn } from "../../components/Form";
+// import "./stylistCalendar.css";
+import Calendar from "../Calendar/stylistCalendar";
 
 const styles = {
   primaryColor: {
@@ -102,7 +104,11 @@ class Books extends Component {
           </Col>
           <Col size="md-6 sm-12">
             <Jumbotron style = {[styles.primaryColor]}>
-              <h1>Books On My List</h1>
+            <Link to="/Calendar/">
+                <button className="btn btn-success"> 
+                  View My Scheduled Appointments
+                </button>
+              </Link>
             </Jumbotron>
             {this.state.books.length ? (
               <List>
