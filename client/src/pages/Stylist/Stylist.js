@@ -9,27 +9,17 @@ import { Input, TextArea, FormBtn } from "../../components/Form";
 // import "./stylistCalendar.css";
 import Calendar from "../Calendar/stylistCalendar";
 
-const styles = {
-  primaryColor: {
-    background: `#fbe9e7`,
-  },
-  secondaryColor: {
-    background: `#c8b7b5`,
-  },
-  anotherColor: {
-    background: `#ffffff`,
-  }
-}
 
 class Books extends Component {
   render() {
     return (
       <Container fluid>
+      <nav className="navbar navbar-light bg-light">
+      <span className="navbar-brand mb-0 h1">Stylist</span>
+      </nav>
         <Row>
           <Col size="md-6">
-            <Jumbotron style = {[styles.primaryColor]}>
-              <h1>STYLIST</h1>
-            </Jumbotron>
+            <Jumbotron>
             <form>
             <div className="dropdown">
             <button className="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -43,9 +33,11 @@ class Books extends Component {
             </div>
           </div>
             </form>
+          </Jumbotron>
+          
           </Col>
           <Col size="md-6 sm-12">
-            <Jumbotron style = {[styles.primaryColor]}>
+            <Jumbotron>
             <Link to="/Calendar">
                 <button className="btn btn-success"> 
                   View My Scheduled Appointments
