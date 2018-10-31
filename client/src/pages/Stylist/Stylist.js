@@ -22,69 +22,24 @@ const styles = {
 }
 
 class Books extends Component {
-  state = {
-    books: [],
-    title: "",
-    author: "",
-    synopsis: ""
-  };
-
-  componentDidMount() {
-    this.loadBooks();
-  }
-
-  loadBooks = () => {
-    API.getBooks()
-      .then(res =>
-        this.setState({ books: res.data, title: "", author: "", synopsis: "" })
-      )
-      .catch(err => console.log(err));
-  };
-
-  deleteBook = id => {
-    API.deleteBook(id)
-      .then(res => this.loadBooks())
-      .catch(err => console.log(err));
-  };
-
-  handleInputChange = event => {
-    const { name, value } = event.target;
-    this.setState({
-      [name]: value
-    });
-  };
-
-  handleFormSubmit = event => {
-    event.preventDefault();
-    if (this.state.title && this.state.author) {
-      API.saveBook({
-        title: this.state.title,
-        author: this.state.author,
-        synopsis: this.state.synopsis
-      })
-        .then(res => this.loadBooks())
-        .catch(err => console.log(err));
-    }
-  };
-
   render() {
     return (
       <Container fluid>
         <Row>
           <Col size="md-6">
             <Jumbotron style = {[styles.primaryColor]}>
-              <h1>STYLIST PAGE</h1>
+              <h1>STYLIST</h1>
             </Jumbotron>
             <form>
-            <div class="dropdown">
-            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <div className="dropdown">
+            <button className="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               Stylist Pricing
             </button>
-            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-              <a class="dropdown-item" href="#">$25 - $50</a>
-              <a class="dropdown-item" href="#">$50 - $75</a>
-              <a class="dropdown-item" href="#">$75 - 100</a>
-              <a class="dropdown-item" href="#">$100 - $150</a>
+            <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
+              <a className="dropdown-item" href="#">$25 - $50</a>
+              <a className="dropdown-item" href="#">$50 - $75</a>
+              <a className="dropdown-item" href="#">$75 - 100</a>
+              <a className="dropdown-item" href="#">$100 - $150</a>
             </div>
           </div>
             </form>
@@ -97,33 +52,14 @@ class Books extends Component {
                 </button>
               </Link>
             </Jumbotron>
-            <div class="card">
-            <div class="form-group">
-              <label for="inputPassword6">License Number</label>
-              <input type="password" id="inputPassword6" class="form-control mx-sm-3" aria-describedby="passwordHelpInline">
-              <small id="passwordHelpInline" class="text-muted">
-                Must be 8-20 characters long.
-              </small>
-              </input>
-              </div>
-              </div>
-            {this.state.books.length ? (
-              <List>
-                {this.state.books.map(book => (
-                  <ListItem key={book._id}>
-                    <Link to={"/books/" + book._id}>
-                      <strong>
-                        {book.title} by {book.author}
-                      </strong>
-                    </Link>
-                    <DeleteBtn onClick={() => this.deleteBook(book._id)} />
-                  </ListItem>
-                ))}
-              </List>
-            ) : (
-              <h3>No Results to Display</h3>
-            )}
           </Col>
+        </Row>
+        <Row>
+        <Col size="md-6 sm-12">
+        <Container>
+       
+        </Container>
+        </Col>
         </Row>
       </Container>
     );
