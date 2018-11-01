@@ -23,13 +23,13 @@ const Nav = (props) => {
   }
   
   return (
-    <nav className="navbar navbar-expand-lg navbar-dark bg-primary">
+    <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
       <Col size="md-2">
         <Link to="/" className="navbar-brand">GLAMobile</Link>
       </Col>
       <Col size="md-7"></Col>
       <Col size="md-3">
-        <div className="float-right">
+        <div className="float-right tan">
         {greeting} - <Link to="#" className="logout" onClick={props.logout}>Logout</Link>
         </div>
       </Col>

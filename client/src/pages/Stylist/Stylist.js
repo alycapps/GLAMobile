@@ -6,121 +6,52 @@ import { Link } from "react-router-dom";
 import { Col, Row, Container } from "../../components/Grid";
 import { List, ListItem } from "../../components/List";
 import { Input, TextArea, FormBtn } from "../../components/Form";
+// import "./stylistCalendar.css";
+import Calendar from "../Calendar/stylistCalendar";
 
-const styles = {
-  primaryColor: {
-    background: `#fbe9e7`,
-  },
-  secondaryColor: {
-    background: `#c8b7b5`,
-  },
-  anotherColor: {
-    background: `#ffffff`,
-  }
-}
 
 class Books extends Component {
-  state = {
-    books: [],
-    title: "",
-    author: "",
-    synopsis: ""
-  };
-
-  componentDidMount() {
-    this.loadBooks();
-  }
-
-  loadBooks = () => {
-    API.getBooks()
-      .then(res =>
-        this.setState({ books: res.data, title: "", author: "", synopsis: "" })
-      )
-      .catch(err => console.log(err));
-  };
-
-  deleteBook = id => {
-    API.deleteBook(id)
-      .then(res => this.loadBooks())
-      .catch(err => console.log(err));
-  };
-
-  handleInputChange = event => {
-    const { name, value } = event.target;
-    this.setState({
-      [name]: value
-    });
-  };
-
-  handleFormSubmit = event => {
-    event.preventDefault();
-    if (this.state.title && this.state.author) {
-      API.saveBook({
-        title: this.state.title,
-        author: this.state.author,
-        synopsis: this.state.synopsis
-      })
-        .then(res => this.loadBooks())
-        .catch(err => console.log(err));
-    }
-  };
-
   render() {
     return (
       <Container fluid>
+      <nav className="navbar navbar-light bg-light">
+      <span className="navbar-brand mb-0 h1">Stylist</span>
+      </nav>
         <Row>
           <Col size="md-6">
-            <Jumbotron style = {[styles.primaryColor]}>
-              <h1>STYLIST PAGE</h1>
-            </Jumbotron>
+            <Jumbotron>
             <form>
-              <Input
-                value={this.state.title}
-                onChange={this.handleInputChange}
-                name="title"
-                placeholder="Title (required)"
-              />
-              <Input
-                value={this.state.author}
-                onChange={this.handleInputChange}
-                name="author"
-                placeholder="Author (required)"
-              />
-              <TextArea
-                value={this.state.synopsis}
-                onChange={this.handleInputChange}
-                name="synopsis"
-                placeholder="Synopsis (Optional)"
-              />
-              <FormBtn
-                disabled={!(this.state.author && this.state.title)}
-                onClick={this.handleFormSubmit}
-              >
-                Submit Book
-              </FormBtn>
+            <div className="dropdown">
+            <button className="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Stylist Pricing
+            </button>
+            <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
+              <a className="dropdown-item" href="#">$25 - $50</a>
+              <a className="dropdown-item" href="#">$50 - $75</a>
+              <a className="dropdown-item" href="#">$75 - 100</a>
+              <a className="dropdown-item" href="#">$100 - $150</a>
+            </div>
+          </div>
             </form>
+          </Jumbotron>
+          
           </Col>
           <Col size="md-6 sm-12">
-            <Jumbotron style = {[styles.primaryColor]}>
-              <h1>Books On My List</h1>
+            <Jumbotron>
+            <Link to="/Calendar">
+                <button className="btn btn-success"> 
+                  View My Scheduled Appointments
+                </button>
+              </Link>
             </Jumbotron>
-            {this.state.books.length ? (
-              <List>
-                {this.state.books.map(book => (
-                  <ListItem key={book._id}>
-                    <Link to={"/books/" + book._id}>
-                      <strong>
-                        {book.title} by {book.author}
-                      </strong>
-                    </Link>
-                    <DeleteBtn onClick={() => this.deleteBook(book._id)} />
-                  </ListItem>
-                ))}
-              </List>
-            ) : (
-              <h3>No Results to Display</h3>
-            )}
           </Col>
+        </Row>
+        <Row>
+        <Col size="md-6 sm-12">
+        <Container>
+       
+        </Container>
+        </Col>
         </Row>
       </Container>
     );
