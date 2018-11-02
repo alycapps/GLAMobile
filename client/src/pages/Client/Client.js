@@ -5,20 +5,7 @@ import { Link } from "react-router-dom";
 import { Col, Row, Container } from "../../components/Grid";
 import { List, ListItem } from "../../components/List";
 import ClientInfo from "../../components/Client";
-
-// import { Input, TextArea, FormBtn } from "../../components/Form";
-
-// const styles = {
-//   primaryColor: {
-//     background: `#fbe9e7`,
-//   },
-//   secondaryColor: {
-//     background: `#c8b7b5`,
-//   },
-//   anotherColor: {
-//     background: `#ffffff`,
-//   }
-// }
+import { FormBtn } from '../../components/Form';
 
 class Books extends Component {
   state = {
@@ -91,9 +78,9 @@ class Books extends Component {
               <h3>No Appointments Scheduled</h3>
             )}
               <Link to="/search">
-                <button className="btn btn-success"> 
+                <FormBtn>
                   Book a New Appointment
-                </button>
+                </FormBtn>
               </Link>
             </form>
           </Col>

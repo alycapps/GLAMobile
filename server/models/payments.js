@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const paymentSchema = new Schema({
-  amount: { type: Float, required: true },
+  amount: { type: Integer, required: true },
   clientEmailAddress: { type: String, required: true },
   styleEmailAddress: { type: String, required: true }
 });

@@ -7,7 +7,7 @@ import { Col, Row, Container } from "../../components/Grid";
 import { List, ListItem } from "../../components/List";
 // import { Input, TextArea, FormBtn } from "../../components/Form";
 import { Input, FormBtn } from "../../components/Form";
-
+import { Card } from "../../components/Card"
 
 class Books extends Component {
   state = {
@@ -18,10 +18,10 @@ class Books extends Component {
   };
 
   componentDidMount() {
-    this.loadBooks();
+    this.loadStylists();
   }
 
-  loadBooks = () => {
+  loadStylists = () => {
     API.getBooks()
       .then(res =>
         this.setState({ books: res.data, title: "", author: "", synopsis: "" })
@@ -63,51 +63,54 @@ class Books extends Component {
             {/* <Jumbotron>
               <h1>SEARCH PAGE</h1>
             </Jumbotron> */}
-            <h3>Search Criteria</h3>
-            <form>
-            <label htmlFor="serviceType">Hair</label>
-              <Input 
-                type="checkbox" 
-                name="serviceType" 
-                value="hair"
-              />
-             <label htmlFor="serviceType">Makeup</label>
-              <Input 
-                type="checkbox" 
-                name="serviceType" 
-                value="makeup"
-              />
-              <label htmlFor="serviceType">Nails</label>
-              <Input 
-                type="checkbox" 
-                name="serviceType" 
-                value="nails" 
-              />
-              <Input
-                value={this.state.title}
-                onChange={this.handleInputChange}
-                name="minPrice"
-                placeholder="Minimum Price ($)"
-              />
-              <Input
-                value={this.state.title}
-                onChange={this.handleInputChange}
-                name="maxPrice"
-                placeholder="Maximum Price ($)"
-              />
-              <Input
-                value={this.state.title}
-                onChange={this.handleInputChange}
-                name="zip"
-                placeholder="Zip Code"
-              />
-              <FormBtn
-                disabled={!(this.state.author && this.state.title)}
-                onClick={this.handleFormSubmit}
-              >
-                Search
-              </FormBtn>
-            </form>
+            <Card title="Search Criteria">
+              {/* <h3>Search Criteria</h3> */}
+              <form title>
+              <label htmlFor="serviceType">Hair</label>
+                <Input 
+                  type="checkbox" 
+                  name="serviceType" 
+                  value="hair"
+                />
+              <label htmlFor="serviceType">Makeup</label>
+                <Input 
+                  type="checkbox" 
+                  name="serviceType" 
+                  value="makeup"
+                />
+                <label htmlFor="serviceType">Nails</label>
+                <Input 
+                  type="checkbox" 
+                  name="serviceType" 
+                  value="nails" 
+                />
+                <Input
+                  value={this.state.title}
+                  onChange={this.handleInputChange}
+                  name="minPrice"
+                  placeholder="Minimum Price ($)"
+                />
+                <Input
+                  value={this.state.title}
+                  onChange={this.handleInputChange}
+                  name="maxPrice"
+                  placeholder="Maximum Price ($)"
+                />
+                <Input
+                  value={this.state.title}
+                  onChange={this.handleInputChange}
+                  name="zip"
+                  placeholder="Zip Code"
+                />
+                <FormBtn
+                  disabled={!(this.state.author && this.state.title)}
+                  onClick={this.handleFormSubmit}
+                >
+                  Search
+                </FormBtn>
+              </form>
+            </Card>
+            
           </Col>
           <Col size="md-6 sm-12">
             <h3>Please select a Stylist to view their profiles and book an appointment.</h3>
