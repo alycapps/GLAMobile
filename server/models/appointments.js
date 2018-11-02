@@ -2,12 +2,15 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const appointmentsSchema = new Schema({
-  clientEmailAddress: { type: String, required: true },
-  stylistEmailAddress: { type: String, required: true },
+  styleType: { type: String, required: true },
+  street: { type: String, required: true },
+  city: { type: String, required: true },
   zipCode: { type: String, required: true },
-  date: { type: Date, required: true },
-  time: { type: Date, required: true },
-  clientAddress: { type: String, required: true }
+  dateTime: { type: Date, required: true },
+  minPrice: { type: Double, required: true },
+  maxPrice: { type: Double, required: true },
+  noteBox: { type: String, required: false},
+  stylistEmail: { type: String, required: true}
 });
 
 const Appointments = mongoose.model("Appointment", appointmentsSchema);
