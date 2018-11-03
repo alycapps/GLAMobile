@@ -29,68 +29,221 @@ class Books extends Component {
          <Col size="md-6 sm-12">
             <div className="card">
              <form>
-              <div className="form-row">
-               <div className="col">
-                <input type="text" className="form-control" placeholder="License Number">
-                </input>
-               </div>
-                <div className="col">
-                 <input type="text" className="form-control" placeholder="State">
-                 </input>
+                <div class="form-row">
+                  <div class="form-group col-md-6">
+                    <label for="licenseNumber">License Number</label>
+                    <input type="text" class="form-control" id="licenseNumber">
+                    </input>
+                  </div>
+                  <div class="form-group col-md-4">
+                  <label for="inputState">State</label>
+                  <select id="inputState" class="form-control">
+                    <option selected>Choose...</option>
+                    <option>...</option>
+                  </select>
                 </div>
-              </div>
-             </form>
+                </div>
+                <div class="form-row" textAlign="center">
+                  <div class="form-group col-md-2">
+                    <label for="inputZip">Zip</label>
+                    <input type="text" class="form-control" id="inputZip">
+                    </input>
+                  </div>
+                </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
+          </form>
             </div>
             <br/>
 
          <Row>
-         {/*HAIR DROPDOWN MENU*/}
-          <Col size="sm-2">
+         
+         </Row>   
+
+         <Row>
+         {/*HAIR MENU*/}
+          <Row>
+            <Container height="200" width="300px" position="absolute">
             <form>
-                <div className="dropdown">
-                    <button className="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        HAIR
-                    </button>
-                    <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                        <a className="dropdown-item" href="#">$25 - $50</a>
-                        <a className="dropdown-item" href="#">$50 - $75</a>
-                        <a className="dropdown-item" href="#">$75 - 100</a>
-                        <a className="dropdown-item" href="#">$100 - $150</a>
-                    </div>
+              <Col size="sm-2">
+                <text>Womens Haircut</text>
+                <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">$</span>
+                    <span class="input-group-text">0.00</span>
+                  </div>
+                  <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)">
+                  </input>
                 </div>
+              </Col>
+                <br/>
+              <Col size="sm-2">
+                <text>Mens Haircut</text>
+                <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">$</span>
+                    <span class="input-group-text">0.00</span>
+                  </div>
+                  <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)">
+                  </input>
+                </div>
+              </Col>  
+                <br/>
+              <Col size="sm-2">  
+                <text>Kids Haircut</text>
+                <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">$</span>
+                    <span class="input-group-text">0.00</span>
+                  </div>
+                  <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)">
+                  </input>
+                </div>
+              </Col>  
+                <br/>
+              <Col size="sm-2">  
+                <text>Blowout</text>
+                <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">$</span>
+                    <span class="input-group-text">0.00</span>
+                  </div>
+                  <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)">
+                  </input>
+                </div>
+              </Col>  
+                <br/>
+              <Col size="sm-2">  
+                <text>Updo</text>
+                <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">$</span>
+                    <span class="input-group-text">0.00</span>
+                  </div>
+                  <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)">
+                  </input>
+                </div>
+              </Col>  
+                <br/>
             </form>
-          </Col>
-          {/*MU DROPDOWN MENU*/}
+            </Container>
+          </Row>
+          {/*MU MENU*/}
           <Col size="sm-2">
-                <form>
-                <div className="dropdown">
-                    <button className="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        MAKEUP
-                    </button>
-                    <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                        <a className="dropdown-item" href="#">$25 - $50</a>
-                        <a className="dropdown-item" href="#">$50 - $75</a>
-                        <a className="dropdown-item" href="#">$75 - 100</a>
-                        <a className="dropdown-item" href="#">$100 - $150</a>
-                    </div>
+                <Container>
+                <text>Full Face Makeup</text>
+                <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">$</span>
+                    <span class="input-group-text">0.00</span>
+                  </div>
+                  <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)">
+                  </input>
                 </div>
-            </form>
+                <br/>
+                <text>Bridal Makeup</text>
+                <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">$</span>
+                    <span class="input-group-text">0.00</span>
+                  </div>
+                  <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)">
+                  </input>
+                </div>
+                <br/>
+                <text>Costume Makeup</text>
+                <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">$</span>
+                    <span class="input-group-text">0.00</span>
+                  </div>
+                  <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)">
+                  </input>
+                </div>
+                <br/>
+                <text>Kids Makeup</text>
+                <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">$</span>
+                    <span class="input-group-text">0.00</span>
+                  </div>
+                  <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)">
+                  </input>
+                </div>
+                <br/>
+                <text>Airbrush Makeup</text>
+                <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">$</span>
+                    <span class="input-group-text">0.00</span>
+                  </div>
+                  <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)">
+                  </input>
+                </div>
+                <br/>
+                </Container>
           </Col>
-          {/*NAILS DROPDOWN MENU*/}
+          {/*NAILS  MENU*/}
           <Col size="sm-2">
-               <form>
-                <div className="dropdown">
-                    <button className="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        NAILS
-                    </button>
-                    <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                        <a className="dropdown-item" href="#">$25 - $50</a>
-                        <a className="dropdown-item" href="#">$50 - $75</a>
-                        <a className="dropdown-item" href="#">$75 - 100</a>
-                        <a className="dropdown-item" href="#">$100 - $150</a>
-                    </div>
+              <text>Manicure</text>
+              <div class="input-group mb-3">
+              <div class="input-group-prepend">
+                  <span class="input-group-text">$</span>
+                  <span class="input-group-text">0.00</span>
                 </div>
-            </form>
+                <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)">
+                </input>
+              </div>
+              <br/>
+              <text>Pedicure</text>
+              <div class="input-group mb-3">
+              <div class="input-group-prepend">
+                  <span class="input-group-text">$</span>
+                  <span class="input-group-text">0.00</span>
+                </div>
+                <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)">
+                </input>
+              </div>
+              <br/>
+              <text>Gel Polish Manicure</text>
+              <div class="input-group mb-3">
+              <div class="input-group-prepend">
+                  <span class="input-group-text">$</span>
+                  <span class="input-group-text">0.00</span>
+                </div>
+                <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)">
+                </input>
+              </div>
+              <br/>
+              <text>Gel Polish Pedicure</text>
+              <div class="input-group mb-3">
+              <div class="input-group-prepend">
+                  <span class="input-group-text">$</span>
+                  <span class="input-group-text">0.00</span>
+                </div>
+                <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)">
+                </input>
+              </div>
+              <br/>
+              <text>Acrylic Fill In</text>
+              <div class="input-group mb-3">
+              <div class="input-group-prepend">
+                  <span class="input-group-text">$</span>
+                  <span class="input-group-text">0.00</span>
+                </div>
+                <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)">
+                </input>
+              </div>
+              <br/>
+              <text>Kids Manicure/Pedicure</text>
+              <div class="input-group mb-3">
+              <div class="input-group-prepend">
+                  <span class="input-group-text">$</span>
+                  <span class="input-group-text">0.00</span>
+                </div>
+                <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)">
+                </input>
+              </div>
+              <br/>
           </Col>
          </Row>
          </Col>
