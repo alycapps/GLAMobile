@@ -23,8 +23,8 @@ class Books extends Component {
           <Col size="md-6">
           </Col>
           <Col size="md-6 sm-12">
-           <Container>
-           <text textAlign="right">Google Maps Goes Here</text>
+           <Container id="mapbox">
+           <text textAlign="right">Mapbox Goes Here</text>
            </Container>
 
           </Col>
