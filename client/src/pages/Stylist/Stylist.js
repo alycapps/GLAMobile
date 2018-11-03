@@ -98,8 +98,8 @@ class Books extends Component {
 
          {/* ROW TWO CONTAINING GOOGLE MAPS*/}     
          <Col size="md-6 sm-12">
-            <Container>
-             <text textAlign="right"> GOOGLE MAPS GOES HERE</text>
+            <Container id="mapbox">
+              <text textAlign="right">Google Maps Goes Here</text>
             </Container>
          </Col>
        </Row>
