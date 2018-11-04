@@ -41,14 +41,14 @@ if (process.env.NODE_ENV === 'production') {
 }
 
 // Add routes, both API and view
-app.use(routes);
+app.use("/", routes);
 
 // Error handler
-app.use(function(err, req, res, next) {
-	console.log('====== ERROR =======');
-	console.error(err.stack);
-	res.status(500);
-});
+// app.use(function(err, req, res, next) {
+// 	console.log('====== ERROR =======');
+// 	console.error(err.stack);
+// 	res.status(500);
+// });
 
 // Starting Server
 app.listen(PORT, () => {

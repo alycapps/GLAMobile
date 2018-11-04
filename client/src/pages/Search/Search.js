@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import DeleteBtn from "../../components/DeleteBtn";
+// import DeleteBtn from "../../components/DeleteBtn";
 // import Jumbotron from "../../components/Jumbotron";
 import API from "../../utils/API";
 import { Link } from "react-router-dom";
@@ -11,10 +11,10 @@ import { Card } from "../../components/Card"
 
 class Books extends Component {
   state = {
-    books: [],
-    title: "",
-    author: "",
-    synopsis: ""
+    stylists: [],
+    emailAddress: "",
+    username: "",
+    password: ""
   };
 
   componentDidMount() {
@@ -22,16 +22,17 @@ class Books extends Component {
   }
 
   loadStylists = () => {
-    API.getBooks()
+    API.getStylists()
       .then(res =>
-        this.setState({ books: res.data, title: "", author: "", synopsis: "" })
-      )
+        this.setState({ stylists: res.data, emailAddress: "", username: "", password: "" }),
+        console.log(this.state.stylists)
+        )
       .catch(err => console.log(err));
   };
 
   deleteBook = id => {
     API.deleteBook(id)
-      .then(res => this.loadBooks())
+      .then(res => this.loadStylists())
       .catch(err => console.log(err));
   };
 
@@ -50,7 +51,7 @@ class Books extends Component {
         author: this.state.author,
         synopsis: this.state.synopsis
       })
-        .then(res => this.loadBooks())
+        .then(res => this.loadStylists())
         .catch(err => console.log(err));
     }
   };
@@ -60,12 +61,8 @@ class Books extends Component {
       <Container fluid>
         <Row>
           <Col size="md-6">
-            {/* <Jumbotron>
-              <h1>SEARCH PAGE</h1>
-            </Jumbotron> */}
             <Card title="Search Criteria">
-              {/* <h3>Search Criteria</h3> */}
-              <form title>
+              <form title="searchBox">
               <label htmlFor="serviceType">Hair</label>
                 <Input 
                   type="checkbox" 
@@ -85,25 +82,18 @@ class Books extends Component {
                   value="nails" 
                 />
                 <Input
-                  value={this.state.title}
-                  onChange={this.handleInputChange}
                   name="minPrice"
                   placeholder="Minimum Price ($)"
                 />
                 <Input
-                  value={this.state.title}
-                  onChange={this.handleInputChange}
                   name="maxPrice"
                   placeholder="Maximum Price ($)"
                 />
                 <Input
-                  value={this.state.title}
-                  onChange={this.handleInputChange}
                   name="zip"
                   placeholder="Zip Code"
                 />
                 <FormBtn
-                  disabled={!(this.state.author && this.state.title)}
                   onClick={this.handleFormSubmit}
                 >
                   Search
@@ -114,17 +104,18 @@ class Books extends Component {
           </Col>
           <Col size="md-6 sm-12">
             <h3>Please select a Stylist to view their profiles and book an appointment.</h3>
-            {this.state.books.length ? (
+            {this.state.stylists.length ? (
               <List>
-                {this.state.books.map(book => (
-                  <ListItem key={book._id}>
-                    <Link to={"/books/" + book._id}>
-                      <strong>
-                        {book.title} by {book.author}
-                      </strong>
-                    </Link>
-                    <DeleteBtn onClick={() => this.deleteBook(book._id)} />
-                  </ListItem>
+                {this.state.stylists.map( stylist => (
+                  <ul> {stylist.username} by {stylist.emailAddress} </ul>
+                  
+                  //  <ListItem key={stylist._id}>
+                  //   <Link to={"/users/stylists/" + stylist._id}>
+                  //     <strong>
+                  //       {stylist.username} by {stylist.emailAddress}
+                  //     </strong>
+                  //   </Link>
+                  // </ListItem>                
                 ))}
               </List>
             ) : (
