@@ -5,6 +5,7 @@ const stylistRoutes = require("./users");
 
 // Book routes
 router.use("/books", bookRoutes);
-router.use("/users/stylist", stylistRoutes);
+// Stylist routes
+router.use("/users/stylists", stylistRoutes);
 
 module.exports = router;

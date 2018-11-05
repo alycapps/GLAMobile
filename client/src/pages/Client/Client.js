@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import DeleteBtn from "../../components/DeleteBtn";
+// import DeleteBtn from "../../components/DeleteBtn";
 import API from "../../utils/API";
 import { Link } from "react-router-dom";
 import { Col, Row, Container } from "../../components/Grid";
@@ -9,25 +9,32 @@ import { FormBtn } from '../../components/Form';
 
 class Books extends Component {
   state = {
-    books: [],
+    // books: [],
     title: "",
     author: "",
     synopsis: "",
+    stylists: [],
     client: JSON.parse(localStorage.getItem('client'))
   };
 
   componentDidMount() {
-    this.loadBooks();
+    this.loadStylists();
   }
 
-  loadBooks = () => {
-    API.getBooks()
+  // loadBooks = () => {
+  //   API.getBooks()
+  //     .then(res =>
+  //       this.setState({ books: res.data, title: "", author: "", synopsis: "" })
+  //     )
+  //     .catch(err => console.log(err));
+  // };
+  loadStylists = () => {
+    API.getStylists()
       .then(res =>
-        this.setState({ books: res.data, title: "", author: "", synopsis: "" })
-      )
+        this.setState({ stylists: res.data })
+        )
       .catch(err => console.log(err));
   };
-
   deleteBook = id => {
     API.deleteBook(id)
       .then(res => this.loadBooks())
@@ -61,16 +68,16 @@ class Books extends Component {
           <Col size="md-6">
             <form>
               <h3>Upcoming Appointments</h3>
-              {this.state.books.length ? (
+              {this.state.stylists.length ? (
               <List>
-                {this.state.books.map(book => (
-                  <ListItem key={book._id}>
-                    <Link to={"/books/" + book._id}>
-                      <strong>
+                {this.state.stylists.map(stylists => (
+                  <ListItem key={stylists._id}>
+                    <Link to={"/stylists/" + stylists._id}>
+                      {/* <strong>
                         {book.title} by {book.author}
-                      </strong>
+                      </strong> */}
                     </Link>
-                    <DeleteBtn onClick={() => this.deleteBook(book._id)} />
+                    {/* <DeleteBtn onClick={() => this.deleteBook(book._id)} /> */}
                   </ListItem>
                 ))}
               </List>

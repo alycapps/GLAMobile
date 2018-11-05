@@ -106,7 +106,7 @@ class App extends Component {
 						<Route exact path="/client" component={() => <LoginForm user={this.login}/>} />
 						<Route exact path="/stylist" component={() => <LoginForm user={this.login}/>} />
 						<Route exact path="/search" component={() => <LoginForm user={this.login}/>} />
-
+						<Route exact path="/calendar" component={() => <LoginForm user={this.login}/>} />
           </div>
         )}
 			</div>
