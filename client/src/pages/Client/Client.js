@@ -19,7 +19,7 @@ class Books extends Component {
 
   componentDidMount() {
     this.loadStylists();
-  }
+  };
 
   // loadBooks = () => {
   //   API.getBooks()
@@ -35,6 +35,7 @@ class Books extends Component {
         )
       .catch(err => console.log(err));
   };
+  
   deleteBook = id => {
     API.deleteBook(id)
       .then(res => this.loadBooks())
