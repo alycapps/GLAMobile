@@ -2,9 +2,8 @@ import React, { Component } from "react";
 // import DeleteBtn from "../../components/DeleteBtn";
 // import Jumbotron from "../../components/Jumbotron";
 import API from "../../utils/API";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 import { Col, Row, Container } from "../../components/Grid";
-import { List, ListItem } from "../../components/List";
 // import { Input, TextArea, FormBtn } from "../../components/Form";
 import { Input, FormBtn } from "../../components/Form";
 import { Card } from "../../components/Card"
@@ -105,19 +104,25 @@ class Books extends Component {
           <Col size="md-6 sm-12">
             <h3>Please select a Stylist to view their profiles and book an appointment.</h3>
             {this.state.stylists.length ? (
-              <List>
+              <div className="accordion" id="accordionExample">
                 {this.state.stylists.map( stylist => (
-                  <ul> {stylist.username} by {stylist.emailAddress} </ul>
-                  
-                  //  <ListItem key={stylist._id}>
-                  //   <Link to={"/users/stylists/" + stylist._id}>
-                  //     <strong>
-                  //       {stylist.username} by {stylist.emailAddress}
-                  //     </strong>
-                  //   </Link>
-                  // </ListItem>                
+                  <div className="card">
+                    <div className="card-header" id="headingOne" style={{backgroundColor:"#c8b7b5"}}>
+                      <h5 className="mb-0">
+                        <button className="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                          {stylist.username}
+                        </button>
+                      </h5>
+                    </div>
+                    <div id="collapseOne" className="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+                      <div className="card-body">
+                        {stylist.summary}
+                        Description goes here.
+                      </div>
+                    </div>
+                  </div>               
                 ))}
-              </List>
+              </div>
             ) : (
               <h3>No Stylists Found - please try again.</h3>
             )}
