@@ -14,6 +14,7 @@ class Books extends Component {
     author: "",
     synopsis: "",
     stylists: [],
+    appointments: [],
     client: JSON.parse(localStorage.getItem('client'))
   };
 
@@ -66,14 +67,14 @@ class Books extends Component {
     return (
       <Container fluid>
         <Row>
-          <Col size="md-6">
+          <Col size="md-7">
             <form>
               <h3>Upcoming Appointments</h3>
-              {this.state.stylists.length ? (
+              {this.state.appointments.length ? (
               <List>
-                {this.state.stylists.map(stylists => (
-                  <ListItem key={stylists._id}>
-                    <Link to={"/stylists/" + stylists._id}>
+                {this.state.appointments.map(appointment => (
+                  <ListItem key={appointment._id}>
+                    <Link to={"/appoinment/" + appointment._id}>
                       {/* <strong>
                         {book.title} by {book.author}
                       </strong> */}
@@ -92,7 +93,7 @@ class Books extends Component {
               </Link>
             </form>
           </Col>
-          <Col size="md-6 sm-12">
+          <Col size="md-5 sm-12">
             <ClientInfo />
           </Col>
         </Row>

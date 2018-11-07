@@ -13,13 +13,13 @@ const ClientInfo = (props) => {
     <br></br>
     Username: {this.state.client.username}
     <br></br>
-    Adress: {this.state.client.username}
+    Adress: {this.state.client.address}
     <br></br>
-    Apt: {this.state.client.username}
+    Apt: {this.state.client.apt}
     <br></br>
-    City: {this.state.client.username}
+    City: {this.state.client.city}
     <br></br>
-    State: {this.state.client.username}
+    State: {this.state.client.state}
     <br></br>
   </div>
   )
