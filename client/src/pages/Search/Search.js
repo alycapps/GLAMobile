@@ -43,7 +43,9 @@ class Books extends Component {
   };
 
   bookAppt = event => {
-
+    console.log('CLICKED ')
+    console.log('props ', this.props)
+    this.props.history.push('/calendar')
   };
 
   handleFormSubmit = event => {
@@ -142,4 +144,4 @@ class Books extends Component {
   }
 }
 
-export default Books;
+export default export default withRouter(Books);
