@@ -113,7 +113,6 @@ class App extends Component {
 	}
 }
 
-
 // // container ID for front end
 // var mapboxgl = require('mapbox-gl/dist/mapbox-gl.js');
  

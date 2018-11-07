@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import {Card} from "../../components/Card";
 // import DeleteBtn from "../../components/DeleteBtn";
 // import Jumbotron from "../../components/Jumbotron";
 // import API from "../../utils/API";
@@ -14,250 +15,87 @@ class Books extends Component {
     render() {
         return(
           <div>
-            <Container fluid>
-            <ul className="nav nav-pills nav justify-content-center" margin-top="20px">
-                <li className="nav-items">
-                    <a className="nav-link active" href="/Calendar"> View My Scheduled Appointments</a>
-                </li>
-            </ul>
-        </Container>
-        <br/>
-       {/* END OF HEADER*/}
+          <Col size="md-3"></Col>
+          <Col size="md-6">
+          <Card float='left'>
+          <Container fluid>
+           <ul className="nav nav-pills nav justify-content-center" margin-top="20px">
+              <li className="nav-items">
+                  <a className="nav-link active" href="/Calendar"> View My Scheduled Appointments</a>
+              </li>
+           </ul>
+           </Container>
+           </Card>
+           </Col>
+           <Col size="md-3"></Col>
 
-       {/* ROW ONE CONTAINING LICENSE NUMBER H MU & N PRICING INPUT*/}
-       <Row>
-         <Col size="md-6 sm-12">
-            <div className="card">
-             <form>
-                <div class="form-row">
-                  <div class="form-group col-md-6">
-                    <label for="licenseNumber">License Number</label>
-                    <input type="text" class="form-control" id="licenseNumber">
+           <br/>
+          {/* END OF HEADER*/} 
+            <div className="row">  
+            <Col size="md-5">
+            <Card>
+            <h2 align='center'>Service Pricing</h2>
+                <form>
+                  <Col size="sm-2">
+                    <label>Hair</label>
+                      <input type='text' id='hair' name='hair' placeholder='$0.00'>
+                        </input>
+                  </Col>
+                  <Col size="sm-2">
+                    <label>Makeup</label>
+                      <input type='text' id='hair' name='hair' placeholder='$0.00'>
+                        </input>
+                  </Col>
+                  <Col size="sm-2">
+                    <label>Nails</label>
+                      <input type='text' id='hair' name='hair' placeholder='$0.00'>
+                        </input>
+                        <br/>
+                        <br/>
+                        <button>Submit</button>
+                  </Col>
+                </form>
+                </Card>
+            </Col>
+
+            <Col size="md-5">
+                <Card>
+                <h2 align='center'>Stylist Information</h2>
+                <form>
+                    <label>First Name</label>
+                    <input type='text' id='fname' name='firstname'>
                     </input>
-                  </div>
-                  <div class="form-group col-md-4">
-                  <label for="inputState">State</label>
-                  <select id="inputState" class="form-control">
-                    <option selected>Choose...</option>
-                    <option>...</option>
-                  </select>
-                </div>
-                </div>
-                <div class="form-row" textAlign="center">
-                  <div class="form-group col-md-2">
-                    <label for="inputZip">Zip</label>
-                    <input type="text" class="form-control" id="inputZip">
+                    <br/>
+                    <label>Last Name</label>
+                    <input type='text' id='lname' name='lastname'>
                     </input>
-                  </div>
-                </div>
-                <button type="submit" class="btn btn-primary">Submit</button>
-          </form>
+                    <br/>
+                    <label>City</label>
+                    <input type='text' id='city' name='city'>
+                    </input>
+                    <br/>
+                    <label>Zipcode</label>
+                    <input type='text' id='zipcode' name='zipcode'>
+                    </input>
+                    <br/>
+                    <label>License Number</label>
+                    <input type='text' id='license' name='license'>
+                    </input>
+                    <br/>
+                    <button>Submit</button>
+                    <br/>
+                </form>
+                </Card>
+            </Col>
+            
             </div>
-            <br/>
+            <div className='row'>
+            <Col size="md-4"></Col>
+            <Col size="md-4"></Col>
+            <Col size="md-4"></Col>
+            </div>
 
-         <Row>
-         
-         </Row>   
-
-         <Row>
-         {/*HAIR MENU*/}
-          <Row>
-            <Container height="200" width="300px" position="absolute">
-            <form>
-              <Col size="sm-2">
-                <text>Womens Haircut</text>
-                <div class="input-group mb-3">
-                <div class="input-group-prepend">
-                    <span class="input-group-text">$</span>
-                    <span class="input-group-text">0.00</span>
-                  </div>
-                  <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)">
-                  </input>
-                </div>
-              </Col>
-                <br/>
-              <Col size="sm-2">
-                <text>Mens Haircut</text>
-                <div class="input-group mb-3">
-                <div class="input-group-prepend">
-                    <span class="input-group-text">$</span>
-                    <span class="input-group-text">0.00</span>
-                  </div>
-                  <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)">
-                  </input>
-                </div>
-              </Col>  
-                <br/>
-              <Col size="sm-2">  
-                <text>Kids Haircut</text>
-                <div class="input-group mb-3">
-                <div class="input-group-prepend">
-                    <span class="input-group-text">$</span>
-                    <span class="input-group-text">0.00</span>
-                  </div>
-                  <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)">
-                  </input>
-                </div>
-              </Col>  
-                <br/>
-              <Col size="sm-2">  
-                <text>Blowout</text>
-                <div class="input-group mb-3">
-                <div class="input-group-prepend">
-                    <span class="input-group-text">$</span>
-                    <span class="input-group-text">0.00</span>
-                  </div>
-                  <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)">
-                  </input>
-                </div>
-              </Col>  
-                <br/>
-              <Col size="sm-2">  
-                <text>Updo</text>
-                <div class="input-group mb-3">
-                <div class="input-group-prepend">
-                    <span class="input-group-text">$</span>
-                    <span class="input-group-text">0.00</span>
-                  </div>
-                  <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)">
-                  </input>
-                </div>
-              </Col>  
-                <br/>
-            </form>
-            </Container>
-          </Row>
-          {/*MU MENU*/}
-          <Col size="sm-2">
-                <Container>
-                <text>Full Face Makeup</text>
-                <div class="input-group mb-3">
-                <div class="input-group-prepend">
-                    <span class="input-group-text">$</span>
-                    <span class="input-group-text">0.00</span>
-                  </div>
-                  <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)">
-                  </input>
-                </div>
-                <br/>
-                <text>Bridal Makeup</text>
-                <div class="input-group mb-3">
-                <div class="input-group-prepend">
-                    <span class="input-group-text">$</span>
-                    <span class="input-group-text">0.00</span>
-                  </div>
-                  <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)">
-                  </input>
-                </div>
-                <br/>
-                <text>Costume Makeup</text>
-                <div class="input-group mb-3">
-                <div class="input-group-prepend">
-                    <span class="input-group-text">$</span>
-                    <span class="input-group-text">0.00</span>
-                  </div>
-                  <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)">
-                  </input>
-                </div>
-                <br/>
-                <text>Kids Makeup</text>
-                <div class="input-group mb-3">
-                <div class="input-group-prepend">
-                    <span class="input-group-text">$</span>
-                    <span class="input-group-text">0.00</span>
-                  </div>
-                  <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)">
-                  </input>
-                </div>
-                <br/>
-                <text>Airbrush Makeup</text>
-                <div class="input-group mb-3">
-                <div class="input-group-prepend">
-                    <span class="input-group-text">$</span>
-                    <span class="input-group-text">0.00</span>
-                  </div>
-                  <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)">
-                  </input>
-                </div>
-                <br/>
-                </Container>
-          </Col>
-          {/*NAILS  MENU*/}
-          <Col size="sm-2">
-              <text>Manicure</text>
-              <div class="input-group mb-3">
-              <div class="input-group-prepend">
-                  <span class="input-group-text">$</span>
-                  <span class="input-group-text">0.00</span>
-                </div>
-                <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)">
-                </input>
-              </div>
-              <br/>
-              <text>Pedicure</text>
-              <div class="input-group mb-3">
-              <div class="input-group-prepend">
-                  <span class="input-group-text">$</span>
-                  <span class="input-group-text">0.00</span>
-                </div>
-                <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)">
-                </input>
-              </div>
-              <br/>
-              <text>Gel Polish Manicure</text>
-              <div class="input-group mb-3">
-              <div class="input-group-prepend">
-                  <span class="input-group-text">$</span>
-                  <span class="input-group-text">0.00</span>
-                </div>
-                <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)">
-                </input>
-              </div>
-              <br/>
-              <text>Gel Polish Pedicure</text>
-              <div class="input-group mb-3">
-              <div class="input-group-prepend">
-                  <span class="input-group-text">$</span>
-                  <span class="input-group-text">0.00</span>
-                </div>
-                <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)">
-                </input>
-              </div>
-              <br/>
-              <text>Acrylic Fill In</text>
-              <div class="input-group mb-3">
-              <div class="input-group-prepend">
-                  <span class="input-group-text">$</span>
-                  <span class="input-group-text">0.00</span>
-                </div>
-                <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)">
-                </input>
-              </div>
-              <br/>
-              <text>Kids Manicure/Pedicure</text>
-              <div class="input-group mb-3">
-              <div class="input-group-prepend">
-                  <span class="input-group-text">$</span>
-                  <span class="input-group-text">0.00</span>
-                </div>
-                <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)">
-                </input>
-              </div>
-              <br/>
-          </Col>
-         </Row>
-         </Col>
-        {/* END OF ROW ONE */}
-
-         {/* ROW TWO CONTAINING GOOGLE MAPS*/}     
-         <Col size="md-6 sm-12">
-            <Container id="mapbox">
-              <text textAlign="right">Google Maps Goes Here</text>
-            </Container>
-         </Col>
-       </Row>
-       {/* END OF ROW TWO */}
-       </div>
+          </div>    
       );
     }
 }
