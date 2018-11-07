@@ -18,14 +18,6 @@ class ClientInfo extends React.Component {
       <br></br>
       Username: {this.state.client.username}
       <br></br>
-      Adress: {this.state.client.username}
-      <br></br>
-      Apt: {this.state.client.username}
-      <br></br>
-      City: {this.state.client.username}
-      <br></br>
-      State: {this.state.client.username}
-      <br></br>
     </div>
     )  
   }
