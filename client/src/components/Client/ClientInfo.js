@@ -12,9 +12,9 @@ class ClientInfo extends React.Component {
     return (
       <div>
       <h3>My Profile</h3>
-      First Name: {this.state.client.firstName}
+      First Name: 
       <br></br>
-      Last Name: {this.state.client.lastName}
+      Last Name: 
       <br></br>
       Username: {this.state.client.username}
       <br></br>
