@@ -115,13 +115,13 @@ class App extends Component {
 }
 
 
-// container ID for front end
-var mapboxgl = require('mapbox-gl/dist/mapbox-gl.js');
+// // container ID for front end
+// var mapboxgl = require('mapbox-gl/dist/mapbox-gl.js');
  
-mapboxgl.accessToken = 'pk.eyJ1IjoiaGVyb3NzaXYiLCJhIjoiY2pvMWtkbDFoMGNpNjNwcnBpaHRweGpkMiJ9.5JqFTRYO0akVI2oJ42MO_w';
-var map = new mapboxgl.Map({
-container: 'mapbox',
-style: 'mapbox://styles/mapbox/streets-v10'
-});
+// mapboxgl.accessToken = 'pk.eyJ1IjoiaGVyb3NzaXYiLCJhIjoiY2pvMWtkbDFoMGNpNjNwcnBpaHRweGpkMiJ9.5JqFTRYO0akVI2oJ42MO_w';
+// var map = new mapboxgl.Map({
+// container: 'mapbox',
+// style: 'mapbox://styles/mapbox/streets-v10'
+// });
 
 export default App;
