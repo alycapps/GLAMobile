@@ -42,6 +42,10 @@ class Books extends Component {
     });
   };
 
+  bookAppt = event => {
+
+  };
+
   handleFormSubmit = event => {
     event.preventDefault();
     if (this.state.title && this.state.author) {
@@ -80,7 +84,7 @@ class Books extends Component {
                   name="serviceType" 
                   value="nails" 
                 />
-                <Input
+                {/* <Input
                   name="minPrice"
                   placeholder="Minimum Price ($)"
                 />
@@ -91,7 +95,7 @@ class Books extends Component {
                 <Input
                   name="zip"
                   placeholder="Zip Code"
-                />
+                /> */}
                 <FormBtn
                   onClick={this.handleFormSubmit}
                 >
@@ -118,6 +122,11 @@ class Books extends Component {
                       <div className="card-body">
                         {stylist.summary}
                         Description goes here.
+                        <FormBtn
+                          onClick={this.bookAppt}
+                        >
+                          Book Appointment
+                        </FormBtn>
                       </div>
                     </div>
                   </div>               

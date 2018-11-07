@@ -101,7 +101,6 @@ class App extends Component {
         { !this.state.loggedIn && (
           <div className="auth-wrapper" style={{paddingTop:40}}>
             <Route exact path="/" component={() => <LoginForm login={this.login}/>} />
-            <Route exact path="/books" component={() => <LoginForm user={this.login}/>} />
             <Route exact path="/signup" component={SignupForm} />
 						<Route exact path="/client" component={() => <LoginForm user={this.login}/>} />
 						<Route exact path="/stylist" component={() => <LoginForm user={this.login}/>} />
@@ -114,8 +113,7 @@ class App extends Component {
 	}
 }
 
-
-// container ID for front end
+// // container ID for front end
 // var mapboxgl = require('mapbox-gl/dist/mapbox-gl.js');
  
 // mapboxgl.accessToken = 'pk.eyJ1IjoiaGVyb3NzaXYiLCJhIjoiY2pvMWtkbDFoMGNpNjNwcnBpaHRweGpkMiJ9.5JqFTRYO0akVI2oJ42MO_w';
