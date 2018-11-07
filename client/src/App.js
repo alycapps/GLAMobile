@@ -31,7 +31,7 @@ class App extends Component {
 					loggedIn: true,
 					user: response.data.user
 				});
-				localStorage.setItem('client', JSON.stringify(response.data.user));
+				// localStorage.setItem('client', JSON.stringify(response.data.user));
 			} else {
 				this.setState({
 					loggedIn: false,

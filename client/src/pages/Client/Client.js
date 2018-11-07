@@ -11,7 +11,8 @@ class Books extends Component {
   state = {
     stylists: [],
     appointments: [],
-    client: JSON.parse(localStorage.getItem('client'))
+    client: this.props.user,
+    // user: JSON.parse(localStorage.getItem('client'))
   };
 
   componentDidMount() {
