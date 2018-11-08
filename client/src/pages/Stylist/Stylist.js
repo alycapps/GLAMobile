@@ -9,7 +9,6 @@ import { Col, Container } from "../../components/Grid";
 // import { Input, TextArea, FormBtn } from "../../components/Form";
 // import "./stylistCalendar.css";
 import { Input } from "../../components/Form";
-
 // import Calendar from "../Calendar/stylistCalendar";
 
 
@@ -20,8 +19,9 @@ class Books extends Component {
     lastName: this.props.user.lastName,
     username: this.props.user.username,
     emailAddress: this.props.user.emailAddress,
-    username: this.props.user.username
-    // user: JSON.parse(localStorage.getItem('client'))
+    // city: this.props.user.city,
+    // zipcode: this.props.user.zipcode,
+    licNum: this.props.user.licNum
   };
 
   render() {
@@ -102,7 +102,7 @@ class Books extends Component {
                     placeholder= {this.state.stylist.emailAddress}
                   >
                   </Input>
-                  <label>City</label>
+                  {/* <label>City</label>
                   <Input 
                   type='text' 
                   id='city' 
@@ -117,7 +117,7 @@ class Books extends Component {
                   name='zipcode'
                   placeholder= {this.state.stylist.zipcode}
                   >
-                  </Input>
+                  </Input> */}
                   <label>License Number</label>
                   <Input 
                   type='text' 
