@@ -70,7 +70,9 @@ class App extends Component {
 
 	render() {
 		return (
-			<div className="App">
+			<div className="App" 
+			// style={{backgroundColor: "#fbe9e7"}}
+			>
         { this.state.loggedIn && (
           <div>
             <Nav user={this.state.user} logout={this.logout}/>
