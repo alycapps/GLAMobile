@@ -52,7 +52,7 @@ class Books extends Component {
 
   handleFormSubmit = event => {
     event.preventDefault();
-    if (this.state.title && this.state.author) {
+    if (this.state.hair && this.state.makeup && this.state) {
       API.saveBook({
         title: this.state.title,
         author: this.state.author,
@@ -67,7 +67,7 @@ class Books extends Component {
     return (
       <Container fluid>
         <Row>
-          <Col size="md-6">
+          {/*<Col size="md-6">
             <Card title="Search Criteria">
               <form title="searchBox">
               <label htmlFor="serviceType">Hair</label>
@@ -99,7 +99,7 @@ class Books extends Component {
                 <Input
                   name="zip"
                   placeholder="Zip Code"
-                /> */}
+                />
                 <FormBtn
                   onClick={this.handleFormSubmit}
                 >
@@ -108,8 +108,9 @@ class Books extends Component {
               </form>
             </Card>
             
-          </Col>
-          <Col size="md-6 sm-12">
+              </Col>*/}
+          <Col size="md-2 sm-12"></Col>
+          <Col size="md-8 sm-12">
             <h3>Please select a Stylist to view their profiles and book an appointment.</h3>
             {this.state.stylists.length ? (
               <div className="accordion" id="accordionExample">
@@ -126,7 +127,7 @@ class Books extends Component {
                       <div className="card-body">
                         {stylist.summary}
                         Description goes here.
-                        <FormBtn
+                        <FormBtn id="bob"
                           onClick={this.bookAppt}
                         >
                           Book Appointment
@@ -140,6 +141,7 @@ class Books extends Component {
               <h3>No Stylists Found - please try again.</h3>
             )}
           </Col>
+          <Col size="md-2 sm-12"></Col>
         </Row>
       </Container>
     );
