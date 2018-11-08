@@ -25,7 +25,24 @@ export default {
   getStylist: function(id) {
     return axios.get("/api/users/stylists/" + id);
   },
+  // Update stylist profile info with given id
   updateUser: function(id, data) {
     return axios.put("/api/users/stylists/" + id, data);
+  },
+  // Gets all appts
+  getAppts: function() {
+    return axios.get("/api/appts");
+  },
+  // Gets the appt with the given id
+  getAppt: function(id) {
+    return axios.get("/api/appts/" + id);
+  },
+  // Deletes the appt with the given id
+  deleteAppt: function(id) {
+    return axios.delete("/api/appts/" + id);
+  },
+  // Saves a book to the database
+  saveAppt: function(apptData) {
+    return axios.post("/api/appts", apptData);
   }
 };

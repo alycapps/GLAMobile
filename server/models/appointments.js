@@ -7,8 +7,8 @@ const appointmentsSchema = new Schema({
   city: { type: String, required: true },
   zipCode: { type: String, required: true },
   dateTime: { type: Date, required: true },
-  minPrice: { type: Double, required: true },
-  maxPrice: { type: Double, required: true },
+  minPrice: { type: Number, required: true },
+  maxPrice: { type: Number, required: true },
   noteBox: { type: String, required: false},
   stylistEmail: { type: String, required: true}
 });
