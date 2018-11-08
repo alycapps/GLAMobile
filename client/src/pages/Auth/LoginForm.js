@@ -38,7 +38,7 @@ class LoginForm extends Component {
 			return <Redirect to={{ pathname: this.state.redirectTo }} />
 		} else {
 			return (
-				<Container>
+				<Container className="loginPage">
           <Row>
             <Col size="md-3"></Col>
             <Col size="md-6">

@@ -11,7 +11,11 @@ class Books extends Component {
   state = {
     stylists: [],
     appointments: [],
-    client: this.props.user
+    client: this.props.user,
+    firstName: this.props.user.firstName,
+    lastName: this.props.user.lastName,
+    emailAddress: this.props.user.emailAddress,
+    username: this.props.user.username
     // user: JSON.parse(localStorage.getItem('client'))
   };
 
@@ -103,29 +107,25 @@ class Books extends Component {
           <Col size="md-5 sm-12">
           <div>
             <h3>My Profile</h3>
-            First Name: {this.state.client.firstName ? 
-              (this.state.client.firstName): 
+            First Name: {this.state.firstName ? 
+              (this.state.firstName): 
               (<span style={{color:"red"}}>Unknown -- Please Add</span>)}
             <br></br>
-            Last Name: {this.state.client.lastName ? 
-              (this.state.client.lastName): 
+            Last Name: {this.state.lastName ? 
+              (this.state.lastName): 
               (<span style={{color:"red"}}>Unknown -- Please Add</span>)}
             <br></br>
-            Username: {this.state.client.username ? 
-            (this.state.client.username): 
+            Username: {this.state.username ? 
+            (this.state.username): 
             (<span style={{color:"red"}}>Unknown -- Please Add</span>)}
             <br></br>
-            Email: {this.state.client.emailAddress ? 
-              (this.state.client.emailAddress): 
+            Email: {this.state.emailAddress ? 
+              (this.state.emailAddress): 
               (<span style={{color:"red"}}>Unknown -- Please Add</span>)}
-            {/* <FormBtn onClick={this.editProfile}>
-                Edit Profile Info
-            </FormBtn> */}
             <br></br>
-            <button type="button" className="btn btn-dark" data-toggle="modal" data-target="#exampleModal">
+            <FormBtn data-toggle="modal" data-target="#exampleModal">
               Edit Profile
-            </button>
-
+            </FormBtn>
             <div className="modal fade" id="exampleModal" tabIndex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
               <div className="modal-dialog" role="document">
                 <div className="modal-content">
@@ -169,7 +169,8 @@ class Books extends Component {
                   </div>
                   <div className="modal-footer">
                     <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="button" className="btn btn-dark" onClick={() => this.editProfile(this.state.client._id)}>Save changes</button>
+                    {/* <button type="button" className="btn btn-dark" data-dismiss="modal" onClick={() => this.editProfile(this.state.client._id)}>Save changes</button> */}
+                    <FormBtn data-dismiss="modal" onClick={() => this.editProfile(this.state.client._id)}>Save changes</FormBtn>
                   </div>
                 </div>
               </div>
