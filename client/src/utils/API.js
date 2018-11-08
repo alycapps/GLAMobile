@@ -23,6 +23,9 @@ export default {
   },
   // Gets the stylist with the given id
   getStylist: function(id) {
-    return axios.get("/api/users/stylists" + id);
+    return axios.get("/api/users/stylists/" + id);
+  },
+  updateUser: function(id, data) {
+    return axios.put("/api/users/stylists/" + id, data);
   }
 };

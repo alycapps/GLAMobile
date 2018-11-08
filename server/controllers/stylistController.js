@@ -16,7 +16,9 @@ module.exports = {
       .catch(err => res.status(422).json(err));
   },
   update: function(req, res) {
-    db.User.findOneAndUpdate({ _id: req.params.id }, req.body)
+    let data = req.body;
+    console.log(data);
+    db.User.findOneAndUpdate({ _id: data._id }, {$set: {firstName: data.firstName, lastName: data.lastName}}, {new: true})
       .then(dbModel => res.json(dbModel))
       //error handling
       .catch(err => res.status(422).json(err));
