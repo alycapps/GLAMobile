@@ -148,4 +148,4 @@ class Books extends Component {
   }
 }
 
-export default export default withRouter(Books);
+export default withRouter(Books);

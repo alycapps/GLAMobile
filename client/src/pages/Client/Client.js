@@ -11,7 +11,7 @@ class Books extends Component {
   state = {
     stylists: [],
     appointments: [],
-    client: this.props.user,
+    client: this.props.user
     // user: JSON.parse(localStorage.getItem('client'))
   };
 
@@ -19,13 +19,6 @@ class Books extends Component {
     this.loadAppts();
   };
 
-  // loadBooks = () => {
-  //   API.getBooks()
-  //     .then(res =>
-  //       this.setState({ books: res.data, title: "", author: "", synopsis: "" })
-  //     )
-  //     .catch(err => console.log(err));
-  // };
   loadAppts = () => {
     API.getStylists()
       .then(res =>
@@ -34,9 +27,21 @@ class Books extends Component {
       .catch(err => console.log(err));
   };
   
-  editProfile = () => {
-
-  }
+  editProfile = id => {
+    let data = {
+      '_id': id,
+      'firstName': this.state.firstName,
+      'lastName': this.state.lastName
+    }
+    API.updateUser(id, data)
+    .then(
+      res => console.log(res),
+      console.log("res"),
+      console.log(this.state.client),
+      console.log("user")
+    )
+    .catch(err => console.log(err));
+  };
 
   deleteBook = id => {
     API.deleteBook(id)
@@ -49,20 +54,21 @@ class Books extends Component {
     this.setState({
       [name]: value
     });
+    console.log(this.state);
   };
 
-  handleFormSubmit = event => {
-    event.preventDefault();
-    if (this.state.title && this.state.author) {
-      API.saveBook({
-        title: this.state.title,
-        author: this.state.author,
-        synopsis: this.state.synopsis
-      })
-        .then(res => this.loadBooks())
-        .catch(err => console.log(err));
-    }
-  };
+  // handleFormSubmit = event => {
+  //   event.preventDefault();
+  //   if (this.state.title && this.state.author) {
+  //     API.saveBook({
+  //       title: this.state.title,
+  //       author: this.state.author,
+  //       synopsis: this.state.synopsis
+  //     })
+  //       .then(res => this.loadBooks())
+  //       .catch(err => console.log(err));
+  //   }
+  // };
 
   render() {
     return (
@@ -135,35 +141,35 @@ class Books extends Component {
                     <Input
                       type="text"
                       name="firstName"
-                      onChange={this.handleChange}
+                      onChange={this.handleInputChange}
                       placeholder= {this.state.client.firstName}
                     />
                     <label htmlFor="lastName">Last Name: </label>
                     <Input
                       type="text"
                       name="lastName"
-                      placeholder= {this.state.client.lastName}
-                      onChange={this.handleChange}
+                      placeholder={this.state.client.lastName}
+                      onChange={this.handleInputChange}
                     />
                     <label htmlFor="username">Username: </label>
                     <Input
                       type="text"
                       name="username"
                       placeholder={this.state.client.username}
-                      onChange={this.handleChange}
+                      onChange={this.handleInputChange}
                     />
                     <label htmlFor="email">Email: </label>
                     <Input
                       type="text"
                       name="email"
                       placeholder={this.state.client.emailAddress}
-                      onChange={this.handleChange}
+                      onChange={this.handleInputChange}
                     />
                     </form>
                   </div>
                   <div className="modal-footer">
                     <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="button" className="btn btn-dark">Save changes</button>
+                    <button type="button" className="btn btn-dark" onClick={() => this.editProfile(this.state.client._id)}>Save changes</button>
                   </div>
                 </div>
               </div>
