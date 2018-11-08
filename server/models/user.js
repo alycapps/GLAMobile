@@ -13,7 +13,8 @@ const userSchema = new Schema({
   userType: { type: String, unique: false, required: true },
   nails: { type: Boolean, unique: false, required: false},
   hair: { type: Boolean, unique: false, required: false},
-  makeup: { type: Boolean, unique: false, required: false}
+	makeup: { type: Boolean, unique: false, required: false},
+	licNum: {type: Number, unique: true, required: false}
 });
 
 // Define schema methods
