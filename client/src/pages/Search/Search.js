@@ -45,9 +45,7 @@ class Books extends Component {
   };
 
   bookAppt = event => {
-    console.log('CLICKED ')
-    console.log('props ', this.props)
-    this.props.history.push('/calendar')
+    //function to add appt info to mongoose
   };
 
   handleFormSubmit = event => {
@@ -106,9 +104,8 @@ class Books extends Component {
                   Search
                 </FormBtn>
               </form>
-            </Card>
-            
-              </Col>*/}
+            </Card>  
+          </Col>*/}
           <Col size="md-2 sm-12"></Col>
           <Col size="md-8 sm-12">
             <h3>Please select a Stylist to view their profiles and book an appointment.</h3>
@@ -127,11 +124,62 @@ class Books extends Component {
                       <div className="card-body">
                         {stylist.summary}
                         Description goes here.
-                        <FormBtn id="bob"
-                          onClick={this.bookAppt}
+                        <FormBtn 
+                        data-toggle="modal" 
+                        data-target="#exampleModal"
                         >
                           Book Appointment
                         </FormBtn>
+
+                        <div className="modal fade" id="exampleModal" tabIndex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                          <div className="modal-dialog" role="document">
+                            <div className="modal-content">
+                              <div className="modal-header">
+                                <h5 className="modal-title" id="exampleModalLabel">Book Appointment</h5>
+                                <button type="button" className="close" data-dismiss="modal" aria-label="Close">
+                                  <span aria-hidden="true">&times;</span>
+                                </button>
+                              </div>
+                              <div className="modal-body">
+                                <form>
+                                <label htmlFor="time">Time: </label>
+                                <Input
+                                  type="text"
+                                  name="time"
+                                  // onChange={this.handleInputChange}
+                                  placeholder= "Time Format"
+                                />
+                                <label htmlFor="service">Service Requested: </label>
+                                <Input
+                                  type="text"
+                                  name="service"
+                                  placeholder="e.g. Hair, Makeup, Nails"
+                                  // onChange={this.handleInputChange}
+                                />
+                                <label htmlFor="city">City: </label>
+                                <Input
+                                  type="text"
+                                  name="city"
+                                  placeholder="City"
+                                  // onChange={this.handleInputChange}
+                                />
+                                <label htmlFor="zipcode">Zip Code: </label>
+                                <Input
+                                  type="text"
+                                  name="zipcode"
+                                  placeholder="Zip Code"
+                                  // onChange={this.handleInputChange}
+                                />
+                                </form>
+                              </div>
+                              <div className="modal-footer">
+                                <button type="button" className="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                                <FormBtn data-dismiss="modal" onClick={() => this.bookAppt(this.state.client._id)}>Schedule</FormBtn>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        
                       </div>
                     </div>
                   </div>               
