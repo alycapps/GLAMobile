@@ -11,9 +11,9 @@ const userSchema = new Schema({
   password: { type: String, unique: false, required: true },
   emailAddress: { type: String, unique: true, required: false},
   userType: { type: String, unique: false, required: true },
-  nails: { type: Boolean, unique: false, required: false},
-  hair: { type: Boolean, unique: false, required: false},
-	makeup: { type: Boolean, unique: false, required: false},
+  nails: { type: Number, unique: false, required: false},
+  hair: { type: Number, unique: false, required: false},
+	makeup: { type: Number, unique: false, required: false},
 	licNum: {type: Number, unique: true, required: false}
 });
 

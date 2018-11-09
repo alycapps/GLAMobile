@@ -21,7 +21,10 @@ class Books extends Component {
     emailAddress: this.props.user.emailAddress,
     // city: this.props.user.city,
     // zipcode: this.props.user.zipcode,
-    licNum: this.props.user.licNum
+    licNum: this.props.user.licNum,
+    hair: this.props.user.hair,
+    nails: this.props.user.nails,
+    makeup: this.props.user.makeup
   };
 
   handleInputChange = event => {
@@ -30,6 +33,23 @@ class Books extends Component {
       [name]: value
     });
     console.log(this.state);
+  };
+
+  editPricing = id => {
+    let data = {
+      '_id': id,
+      'hair': this.state.hair,
+      'makeup': this.state.makeup,
+      'nails': this.state.nails
+    }
+    API.updateUser(id, data)
+    .then(
+      res => console.log(res),
+      console.log("res"),
+      console.log(this.state.hair),
+      console.log(this.state.makeup),
+      console.log(this.state.nails)
+    ).catch(err => console.log(err));
   };
   
   editProfile = id => {
@@ -74,42 +94,22 @@ class Books extends Component {
           <div className="row">  
             <Col size="md-6">
               <Card title="Service Pricing">
-                <form>
-                  <label>Hair:</label>
+                    Hair: {this.state.hair ? 
+                      (this.state.hair): 
+                      (<span style={{color:"red"}}>$0.00</span>)}
                     <br></br>
-                    <input 
-                      type='text' 
-                      id='hair' 
-                      name='hair' 
-                      placeholder='$0.00'
-                    >
-                    </input>
-                  <br></br>
-                  <label>Makeup:</label>
-                  <br></br>
-                    <input 
-                      type='text' 
-                      id='hair' 
-                      name='hair' 
-                      placeholder='$0.00'
-                    >
-                    </input>
-                  <br></br>
-                  <label>Nails:</label>
-                  <br></br>
-                    <input 
-                      type='text' 
-                      id='hair' 
-                      name='hair' 
-                      placeholder='$0.00'
-                    >
-                    </input>
-                  <br/>
-                  <br/>
-                  <FormBtn>
-                    Submit
+                    Nails: {this.state.nails ? 
+                      (this.state.nails): 
+                      (<span style={{color:"red"}}>$0.00</span>)}
+                    <br></br>
+                    Makeup: {this.state.makeup ? 
+                      (this.state.makeup): 
+                      (<span style={{color:"red"}}>$0.00</span>)}
+                    <br></br>
+    
+                  <FormBtn onClick={() => this.editPricing(this.state.stylist._id)}>
+                    Edit Pricing
                   </FormBtn>
-                </form>
               </Card>
             </Col>
 
@@ -117,23 +117,23 @@ class Books extends Component {
               <Card title="My Information">
                 First Name: {this.state.firstName ? 
                   (this.state.firstName): 
-                  (<span style={{color:"red"}}>Unknown -- Please Add</span>)}
+                  (<span style={{color:"red"}}>Please Add</span>)}
                 <br></br>
                 Last Name: {this.state.lastName ? 
                   (this.state.lastName): 
-                  (<span style={{color:"red"}}>Unknown -- Please Add</span>)}
+                  (<span style={{color:"red"}}>Please Add</span>)}
                 <br></br>
                 Username: {this.state.username ? 
                   (this.state.username): 
-                  (<span style={{color:"red"}}>Unknown -- Please Add</span>)}
+                  (<span style={{color:"red"}}>Please Add</span>)}
                 <br></br>
                 Email: {this.state.emailAddress ? 
                   (this.state.emailAddress): 
-                  (<span style={{color:"red"}}>Unknown -- Please Add</span>)}
+                  (<span style={{color:"red"}}>Please Add</span>)}
                 <br></br>
                 License Number: {this.state.licNum ? 
                   (this.state.licNum): 
-                  (<span style={{color:"red"}}>Unknown -- Please Add</span>)}
+                  (<span style={{color:"red"}}>Please Add</span>)}
                 <br></br>
                 <FormBtn data-toggle="modal" data-target="#exampleModal">
                   Edit Profile
