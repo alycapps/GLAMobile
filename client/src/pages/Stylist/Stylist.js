@@ -36,7 +36,10 @@ class Books extends Component {
     let data = {
       '_id': id,
       'firstName': this.state.firstName,
-      'lastName': this.state.lastName
+      'lastName': this.state.lastName,
+      'username': this.state.username,
+      'emailAddress':this.state.emailAddress,
+      'licNum': this.state.licNum
     }
     API.updateUser(id, data)
     .then(
@@ -167,10 +170,10 @@ class Books extends Component {
                           placeholder={this.state.stylist.username}
                           onChange={this.handleInputChange}
                         />
-                        <label htmlFor="email">Email: </label>
+                        <label htmlFor="emailAddress">Email: </label>
                         <Input
                           type="text"
-                          name="email"
+                          name="emailAddress"
                           placeholder={this.state.stylist.emailAddress}
                           onChange={this.handleInputChange}
                         />
