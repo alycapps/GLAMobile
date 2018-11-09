@@ -2,13 +2,13 @@ import React, { Component } from "react";
 import {Card} from "../../components/Card";
 // import DeleteBtn from "../../components/DeleteBtn";
 // import Jumbotron from "../../components/Jumbotron";
-// import API from "../../utils/API";
-// import { Link } from "react-router-dom";
-import { Col, Container } from "../../components/Grid";
+import API from "../../utils/API";
+import { Link } from "react-router-dom";
+import { Col, Row, Container } from "../../components/Grid";
 // import { List, ListItem } from "../../components/List";
 // import { Input, TextArea, FormBtn } from "../../components/Form";
 // import "./stylistCalendar.css";
-import { Input } from "../../components/Form";
+import { Input, FormBtn } from "../../components/Form";
 // import Calendar from "../Calendar/stylistCalendar";
 
 
@@ -24,123 +24,177 @@ class Books extends Component {
     licNum: this.props.user.licNum
   };
 
+  handleInputChange = event => {
+    const { name, value } = event.target;
+    this.setState({
+      [name]: value
+    });
+    console.log(this.state);
+  };
+  
+  editProfile = id => {
+    let data = {
+      '_id': id,
+      'firstName': this.state.firstName,
+      'lastName': this.state.lastName
+    }
+    API.updateUser(id, data)
+    .then(
+      res => console.log(res),
+      console.log("res"),
+      console.log(this.state.client),
+      console.log("user")
+    )
+    .catch(err => console.log(err));
+  };
+
   render() {
       return(
-        <div>
-        <Col size="md-3"></Col>
-        <Col size="md-6">
-        <Card float='left'>
-        <Container fluid>
-          <ul className="nav nav-pills nav justify-content-center" margin-top="20px">
-            <li className="nav-items">
-                <a className="nav-link active" href="/Calendar"> View My Scheduled Appointments</a>
-            </li>
-          </ul>
-          </Container>
-          </Card>
+      <Container>
+        <Row>
+          <Col size="md-3"></Col>
+          <Col size="md-6">
+            <Card>
+              <Link to="/Calendar">
+                <button>
+                  View My Scheduled Appointments
+                </button>
+              </Link>
+            </Card>
           </Col>
           <Col size="md-3"></Col>
-
           <br/>
-        {/* END OF HEADER*/} 
+        </Row>
+        <br></br>
+
+        <Row>
           <div className="row">  
-          <Col size="md-5">
-          <Card>
-          <h2 align='center'>Service Pricing</h2>
-              <form>
-                <Col size="sm-2">
-                  <label>Hair</label>
-                    <input type='text' id='hair' name='hair' placeholder='$0.00'>
-                      </input>
-                </Col>
-                <Col size="sm-2">
-                  <label>Makeup</label>
-                    <input type='text' id='hair' name='hair' placeholder='$0.00'>
-                      </input>
-                </Col>
-                <Col size="sm-2">
-                  <label>Nails</label>
-                    <input type='text' id='hair' name='hair' placeholder='$0.00'>
-                      </input>
-                      <br/>
-                      <br/>
-                      <button>Submit</button>
-                </Col>
-              </form>
-              </Card>
-          </Col>
-
-          <Col size="md-5">
-              <Card>
-              <h2 align='center'>Stylist Information</h2>
-              <form>
-                  <label>First Name</label>
-                  <Input 
-                    type='text' 
-                    name='firstname'
-                    placeholder= {this.state.stylist.firstName}
-                  >
-                  </Input>
-                  <label>Last Name</label>
-                  <Input 
-                    type='text' 
-                    name='lastname'
-                    placeholder= {this.state.stylist.lastName}
-                  >
-                  </Input>
-                  <label>Username</label>
-                  <Input 
-                    type='text' 
-                    name='username'
-                    placeholder= {this.state.stylist.username}
-                  >
-                  </Input>
-                  <label>Email</label>
-                  <Input 
-                    type='text' 
-                    name='emailAddress'
-                    placeholder= {this.state.stylist.emailAddress}
-                  >
-                  </Input>
-                  {/* <label>City</label>
-                  <Input 
-                  type='text' 
-                  id='city' 
-                  name='city'
-                  placeholder= {this.state.stylist.city}
-                  >
-                  </Input>
-                  <label>Zipcode</label>
-                  <Input 
-                  type='text' 
-                  id='zipcode' 
-                  name='zipcode'
-                  placeholder= {this.state.stylist.zipcode}
-                  >
-                  </Input> */}
-                  <label>License Number</label>
-                  <Input 
-                  type='text' 
-                  id='license' 
-                  name='license'
-                  placeholder= {this.state.stylist.licNum}
-                  >
-                  </Input>
+            <Col size="md-6">
+              <Card title="Service Pricing">
+                <form>
+                  <label>Hair:</label>
+                    <br></br>
+                    <input 
+                      type='text' 
+                      id='hair' 
+                      name='hair' 
+                      placeholder='$0.00'
+                    >
+                    </input>
+                  <br></br>
+                  <label>Makeup:</label>
+                  <br></br>
+                    <input 
+                      type='text' 
+                      id='hair' 
+                      name='hair' 
+                      placeholder='$0.00'
+                    >
+                    </input>
+                  <br></br>
+                  <label>Nails:</label>
+                  <br></br>
+                    <input 
+                      type='text' 
+                      id='hair' 
+                      name='hair' 
+                      placeholder='$0.00'
+                    >
+                    </input>
                   <br/>
-                  <button>Submit</button>
                   <br/>
-              </form>
+                  <FormBtn>
+                    Submit
+                  </FormBtn>
+                </form>
               </Card>
-          </Col>
-          
-          </div>
-          <div className='row'>
-          <Col size="md-4"></Col>
-          <Col size="md-4"></Col>
-          <Col size="md-4"></Col>
-          </div>
+            </Col>
 
-        </div>    
+            <Col size="md-6">
+              <Card title="My Information">
+                First Name: {this.state.firstName ? 
+                  (this.state.firstName): 
+                  (<span style={{color:"red"}}>Unknown -- Please Add</span>)}
+                <br></br>
+                Last Name: {this.state.lastName ? 
+                  (this.state.lastName): 
+                  (<span style={{color:"red"}}>Unknown -- Please Add</span>)}
+                <br></br>
+                Username: {this.state.username ? 
+                  (this.state.username): 
+                  (<span style={{color:"red"}}>Unknown -- Please Add</span>)}
+                <br></br>
+                Email: {this.state.emailAddress ? 
+                  (this.state.emailAddress): 
+                  (<span style={{color:"red"}}>Unknown -- Please Add</span>)}
+                <br></br>
+                License Number: {this.state.licNum ? 
+                  (this.state.licNum): 
+                  (<span style={{color:"red"}}>Unknown -- Please Add</span>)}
+                <br></br>
+                <FormBtn data-toggle="modal" data-target="#exampleModal">
+                  Edit Profile
+                </FormBtn>
+                <div className="modal fade" id="exampleModal" tabIndex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                  <div className="modal-dialog" role="document">
+                    <div className="modal-content">
+                      <div className="modal-header">
+                        <h5 className="modal-title" id="exampleModalLabel">My Profile</h5>
+                        <button type="button" className="close" data-dismiss="modal" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                      </div>
+                      <div className="modal-body">
+                        <form>
+                        <label htmlFor="firstName">First Name: </label>
+                        <Input
+                          type="text"
+                          name="firstName"
+                          onChange={this.handleInputChange}
+                          placeholder= {this.state.stylist.firstName}
+                        />
+                        <label htmlFor="lastName">Last Name: </label>
+                        <Input
+                          type="text"
+                          name="lastName"
+                          placeholder={this.state.stylist.lastName}
+                          onChange={this.handleInputChange}
+                        />
+                        <label htmlFor="username">Username: </label>
+                        <Input
+                          type="text"
+                          name="username"
+                          placeholder={this.state.stylist.username}
+                          onChange={this.handleInputChange}
+                        />
+                        <label htmlFor="email">Email: </label>
+                        <Input
+                          type="text"
+                          name="email"
+                          placeholder={this.state.stylist.emailAddress}
+                          onChange={this.handleInputChange}
+                        />
+                        <label htmlFor="licNum">License Number: </label>
+                        <Input
+                          type="text"
+                          name="licNum"
+                          placeholder={this.state.stylist.licNum}
+                          onChange={this.handleInputChange}
+                        />
+                        </form>
+                      </div>
+                      <div className="modal-footer">
+                        <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <FormBtn data-dismiss="modal" onClick={() => this.editProfile(this.state.stylist._id)}>Save changes</FormBtn>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </Card>
+            </Col>  
+          </div>
+        </Row>
+      </Container> 
     );
   }
 }
