@@ -1,16 +1,14 @@
 import React, { Component } from "react";
-// import DeleteBtn from "../../components/DeleteBtn";
-// import Jumbotron from "../../components/Jumbotron";
 import API from "../../utils/API";
 // import { Link } from "react-router-dom";
 import { Col, Row, Container } from "../../components/Grid";
 // import { Input, TextArea, FormBtn } from "../../components/Form";
 import { Input, FormBtn } from "../../components/Form";
-import { Card } from "../../components/Card"
+// import { Card } from "../../components/Card"
 import { withRouter } from 'react-router-dom';
 
 
-class Books extends Component {
+class Search extends Component {
   state = {
     stylists: [],
     emailAddress: "",
@@ -28,12 +26,6 @@ class Books extends Component {
         this.setState({ stylists: res.data, emailAddress: "", username: "", password: "" }),
         console.log(this.state.stylists)
         )
-      .catch(err => console.log(err));
-  };
-
-  deleteBook = id => {
-    API.deleteBook(id)
-      .then(res => this.loadStylists())
       .catch(err => console.log(err));
   };
 
@@ -60,18 +52,8 @@ class Books extends Component {
     });
   };
 
-  handleFormSubmit = event => {
-    event.preventDefault();
-    if (this.state.hair && this.state.makeup && this.state) {
-      API.saveBook({
-        title: this.state.title,
-        author: this.state.author,
-        synopsis: this.state.synopsis
-      })
-        .then(res => this.loadStylists())
-        .catch(err => console.log(err));
-    }
-  };
+  // handleFormSubmit = event => {
+  // };
 
   render() {
     return (
@@ -208,4 +190,4 @@ class Books extends Component {
   }
 }
 
-export default withRouter(Books);
+export default withRouter(Search);
