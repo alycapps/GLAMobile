@@ -4,10 +4,9 @@ import API from "../../utils/API";
 import { Link } from "react-router-dom";
 import { Col, Row, Container } from "../../components/Grid";
 import { List, ListItem } from "../../components/List";
-// import ClientInfo from "../../components/Client";
 import { Input, FormBtn } from '../../components/Form';
 
-class Books extends Component {
+class Client extends Component {
   state = {
     stylists: [],
     appointments: [],
@@ -49,11 +48,11 @@ class Books extends Component {
     .catch(err => console.log(err));
   };
 
-  deleteBook = id => {
-    API.deleteBook(id)
-      .then(res => this.loadBooks())
-      .catch(err => console.log(err));
-  };
+  // deleteBook = id => {
+  //   API.deleteBook(id)
+  //     .then(res => this.loadBooks())
+  //     .catch(err => console.log(err));
+  // };
 
   handleInputChange = event => {
     const { name, value } = event.target;
@@ -62,19 +61,6 @@ class Books extends Component {
     });
     console.log(this.state);
   };
-
-  // handleFormSubmit = event => {
-  //   event.preventDefault();
-  //   if (this.state.title && this.state.author) {
-  //     API.saveBook({
-  //       title: this.state.title,
-  //       author: this.state.author,
-  //       synopsis: this.state.synopsis
-  //     })
-  //       .then(res => this.loadBooks())
-  //       .catch(err => console.log(err));
-  //   }
-  // };
 
   render() {
     return (
@@ -171,7 +157,6 @@ class Books extends Component {
                   </div>
                   <div className="modal-footer">
                     <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
-                    {/* <button type="button" className="btn btn-dark" data-dismiss="modal" onClick={() => this.editProfile(this.state.client._id)}>Save changes</button> */}
                     <FormBtn data-dismiss="modal" onClick={() => this.editProfile(this.state.client._id)}>Save changes</FormBtn>
                   </div>
                 </div>
@@ -185,4 +170,4 @@ class Books extends Component {
   }
 }
 
-export default Books;
+export default Client;
