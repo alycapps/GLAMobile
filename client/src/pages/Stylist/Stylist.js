@@ -107,12 +107,57 @@ class Books extends Component {
                       (<span style={{color:"red"}}>$0.00</span>)}
                     <br></br>
     
-                  <FormBtn onClick={() => this.editPricing(this.state.stylist._id)}>
+                    <FormBtn data-toggle="modal" data-target="#editPricing">
                     Edit Pricing
-                  </FormBtn>
+                     </FormBtn>
+
+                  <div className="modal fade" id="editPricing" tabIndex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                  <div className="modal-dialog" role="document">
+                    <div className="modal-content">
+                      <div className="modal-header">
+                        <h5 className="modal-title" id="exampleModalLabel">Edit Pricing</h5>
+                        <button type="button" className="close" data-dismiss="modal" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                      </div>
+                      <div className="modal-body">
+                        <form>
+                        <label htmlFor="hair">Hair: </label>
+                        <Input
+                          type="number"
+                          name="hair"
+                          onChange={this.handleInputChange}
+                          placeholder= {this.state.hair}
+                        />
+                        <label htmlFor="makeup">Makeup: </label>
+                        <Input
+                          type="number"
+                          name="makeup"
+                          placeholder={this.state.makeup}
+                          onChange={this.handleInputChange}
+                        />
+                        <label htmlFor="nails">Nails: </label>
+                        <Input
+                          type="number"
+                          name="nails"
+                          placeholder={this.state.nails}
+                          onChange={this.handleInputChange}
+                        />
+                        </form>
+                      </div>
+                      <div className="modal-footer">
+                        <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <FormBtn data-dismiss="modal" onClick={() => this.editProfile(this.state.stylist._id)}>Save changes</FormBtn>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
               </Card>
             </Col>
+           {/* End of Pricing info/modal */}
 
+           {/*Stylist info/modal */}
             <Col size="md-6">
               <Card title="My Information">
                 First Name: {this.state.firstName ? 
