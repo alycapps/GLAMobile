@@ -36,16 +36,18 @@ class Search extends Component {
     });
   };
 
-  bookAppt = event => {
+  bookAppt = stylistId => {
     // function to add appt info to mongoose
     console.log('CLICKED')
-    console.log(this.state)
-    this.state.history.push('/calendar')
+    console.log(this.state, stylistId)
+    this.props.history.push('/calendar')
     const apptInfo = {
       city: this.state.city,
       zipcode: this.state.zipcode,
       dateTime: this.state.dateTime,
-      service: this.state.service
+      service: this.state.service,
+      clientId: this.props.user._id,
+      stylistId: stylistId
     }
     API.saveAppt(apptInfo).then(res => {
         console.log(res, "This is the response from appointment info");
@@ -168,7 +170,7 @@ class Search extends Component {
                               </div>
                               <div className="modal-footer">
                                 <button type="button" className="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                                <FormBtn data-dismiss="modal" onClick={() => this.bookAppt()}>Schedule</FormBtn>
+                                <FormBtn data-dismiss="modal" onClick={() => this.bookAppt(stylist._id)}>Schedule</FormBtn>
                               </div>
                             </div>
                           </div>

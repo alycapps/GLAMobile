@@ -12,6 +12,8 @@ module.exports = {
   findById: function(req, res) {
     db.Appointments
       .findById(req.params.id)
+      .populate("clientId")
+      .populate("stylistId")
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
@@ -19,8 +21,6 @@ module.exports = {
     console.log("--------- In create/save appointment ---------------");
     db.Appointments
       .create(req.body)
-      // .populate("clientId")
-      // .populate("stylistId")
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
