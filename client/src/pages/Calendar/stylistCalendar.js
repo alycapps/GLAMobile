@@ -1,4 +1,6 @@
-import React, { Component } from "react";
+import React from "react";
+import dateFns from "date-fns";
+import { ClientResponse } from "http";
 // import DeleteBtn from "../../components/DeleteBtn";
 // import Jumbotron from "../../components/Jumbotron";
 // import API from "../../utils/API";
@@ -7,9 +9,9 @@ import React, { Component } from "react";
 // import { List, ListItem } from "../../components/List";
 // import { Input, TextArea, FormBtn } from "../../components/Form";
 // import { Input, FormBtn } from "../../components/Form";
-import dateFns from "date-fns";
 import "./stylistCalendar.css";
 
+const clients = [ { date: 14, name: "Hardin" } ]
 class Calendar extends React.Component {
   state = {
     currentMonth: new Date(),
@@ -70,6 +72,7 @@ class Calendar extends React.Component {
     while (day <= endDate) {
       for (let i = 0; i < 7; i++) {
         formattedDate = dateFns.format(day, dateFormat);
+        
         const cloneDay = day;
         days.push(
           <div
@@ -77,7 +80,8 @@ class Calendar extends React.Component {
               !dateFns.isSameMonth(day, monthStart)
                 ? "disabled"
                 : dateFns.isSameDay(day, selectedDate) ? "selected" : ""
-            }`}
+            }
+    }
             key={day}
             onClick={() => this.onDateClick(dateFns.parse(cloneDay))}
           >
