@@ -1,7 +1,5 @@
 import React, { Component } from "react";
 import {Card} from "../../components/Card";
-// import DeleteBtn from "../../components/DeleteBtn";
-// import Jumbotron from "../../components/Jumbotron";
 import API from "../../utils/API";
 import { Link } from "react-router-dom";
 import { Col, Row, Container } from "../../components/Grid";
@@ -9,10 +7,8 @@ import { Col, Row, Container } from "../../components/Grid";
 // import { Input, TextArea, FormBtn } from "../../components/Form";
 // import "./stylistCalendar.css";
 import { Input, FormBtn } from "../../components/Form";
-// import Calendar from "../Calendar/stylistCalendar";
 
-
-class Books extends Component {
+class Stylist extends Component {
   state = {
     stylist: this.props.user,
     firstName: this.props.user.firstName,
@@ -247,4 +243,4 @@ class Books extends Component {
   }
 }
 
-export default Books;
+export default Stylist;
