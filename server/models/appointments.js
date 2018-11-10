@@ -6,12 +6,8 @@ const appointmentsSchema = new Schema({
   city: { type: String, required: false },
   zipCode: { type: String, required: false },
   dateTime: { type: String, required: false },
-  clientId: {type: Schema.Types.ObjectId, ref: "User"},
-  stylistId: {type: Schema.Types.ObjectId, ref: "User"}
-// add code to reference stylist 
-  //ref: "User"
-// add code to reference client id
-
+  clientId: {type: Schema.Types.ObjectId, ref: 'User'},
+  stylistId: {type: Schema.Types.ObjectId, ref: 'User'}
 });
 
 const Appointments = mongoose.model("Appointment", appointmentsSchema);
