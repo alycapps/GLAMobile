@@ -45,7 +45,10 @@ class Books extends Component {
   };
 
   bookAppt = event => {
-    console.log(this.state);
+    // function to add appt info to mongoose
+    console.log('CLICKED')
+    console.log(this.state)
+    this.state.history.push('/calendar')
     const apptInfo = {
       city: this.state.city,
       zipcode: this.state.zipcode,
