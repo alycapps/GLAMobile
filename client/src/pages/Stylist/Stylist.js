@@ -91,15 +91,15 @@ class Stylist extends Component {
             <Col size="md-6">
               <Card title="Service Pricing">
                     Hair: {this.state.hair ? 
-                      (this.state.hair): 
+                      ("$" + this.state.hair): 
                       (<span style={{color:"red"}}>$0.00</span>)}
                     <br></br>
                     Nails: {this.state.nails ? 
-                      (this.state.nails): 
+                      ("$" + this.state.nails): 
                       (<span style={{color:"red"}}>$0.00</span>)}
                     <br></br>
                     Makeup: {this.state.makeup ? 
-                      (this.state.makeup): 
+                      ("$" + this.state.makeup): 
                       (<span style={{color:"red"}}>$0.00</span>)}
                     <br></br>
     
