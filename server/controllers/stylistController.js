@@ -22,13 +22,13 @@ module.exports = {
       .then(dbModel => res.json(dbModel))
       //error handling
       .catch(err => res.status(422).json(err));
-  }
-  // create: function(req, res) {
-  //   db.User.create(req.body)
-  //     .then(newUser => res.json(newUser))
-  //     //error handling
-  //     .catch(err => res.status(422).json(err));
-  // },
+  },
+  create: function(req, res) {
+    db.User.create(req.body)
+      .then(newUser => res.json(newUser))
+      //error handling
+      .catch(err => res.status(422).json(err));
+  },
   // remove: function(req, res) {
   //   db.User.findById({ _id: req.params.id })
   //     .then(dbModel => dbModel.remove())

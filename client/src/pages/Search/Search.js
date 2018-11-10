@@ -45,7 +45,17 @@ class Books extends Component {
   };
 
   bookAppt = event => {
-    //function to add appt info to mongoose
+    console.log(this.state);
+    const apptInfo = {
+      city: this.state.city,
+      zipcode: this.state.zipcode,
+      dateTime: this.state.dateTime,
+      service: this.state.service
+    }
+    API.saveAppt(apptInfo).then(res => {
+        console.log(res, "This is the response from appointment info");
+    });
+   
   };
 
   handleFormSubmit = event => {
@@ -142,11 +152,11 @@ class Books extends Component {
                               </div>
                               <div className="modal-body">
                                 <form>
-                                <label htmlFor="time">Time: </label>
+                                <label htmlFor="dateTime">Time: </label>
                                 <Input
                                   type="text"
-                                  name="time"
-                                  // onChange={this.handleInputChange}
+                                  name="dateTime"
+                                  onChange={this.handleInputChange}
                                   placeholder= "Time Format"
                                 />
                                 <label htmlFor="service">Service Requested: </label>
@@ -154,27 +164,27 @@ class Books extends Component {
                                   type="text"
                                   name="service"
                                   placeholder="e.g. Hair, Makeup, Nails"
-                                  // onChange={this.handleInputChange}
+                                   onChange={this.handleInputChange}
                                 />
                                 <label htmlFor="city">City: </label>
                                 <Input
                                   type="text"
                                   name="city"
                                   placeholder="City"
-                                  // onChange={this.handleInputChange}
+                                   onChange={this.handleInputChange}
                                 />
                                 <label htmlFor="zipcode">Zip Code: </label>
                                 <Input
                                   type="text"
                                   name="zipcode"
                                   placeholder="Zip Code"
-                                  // onChange={this.handleInputChange}
+                                   onChange={this.handleInputChange}
                                 />
                                 </form>
                               </div>
                               <div className="modal-footer">
                                 <button type="button" className="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                                <FormBtn data-dismiss="modal" onClick={() => this.bookAppt(this.state.client._id)}>Schedule</FormBtn>
+                                <FormBtn data-dismiss="modal" onClick={() => this.bookAppt()}>Schedule</FormBtn>
                               </div>
                             </div>
                           </div>
