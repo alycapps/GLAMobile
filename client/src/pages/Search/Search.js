@@ -58,7 +58,6 @@ class Books extends Component {
     API.saveAppt(apptInfo).then(res => {
         console.log(res, "This is the response from appointment info");
     });
-   
   };
 
   handleFormSubmit = event => {
