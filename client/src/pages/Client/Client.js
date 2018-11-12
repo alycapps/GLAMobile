@@ -16,7 +16,6 @@ class Client extends Component {
     lastName: this.props.user.lastName,
     emailAddress: this.props.user.emailAddress,
     username: this.props.user.username
-    // user: JSON.parse(localStorage.getItem('client'))
   };
 
   componentDidMount() {
@@ -24,9 +23,9 @@ class Client extends Component {
   };
 
   loadAppts = () => {
-    API.getStylists()
+    API.getAppts()
       .then(res =>
-        this.setState({ stylists: res.data })
+        this.setState({ appointments: res.data })
         )
       .catch(err => console.log(err));
   };
@@ -75,6 +74,7 @@ class Client extends Component {
                 {this.state.appointments.map(appointment => (
                   <ListItem key={appointment._id}>
                     <Link to={"/appoinment/" + appointment._id}>
+                      {appointment.month} {appointment.day}, {appointment.year}
                       {/* <strong>
                         {book.title} by {book.author}
                       </strong> */}
