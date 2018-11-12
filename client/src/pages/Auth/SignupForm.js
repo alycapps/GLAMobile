@@ -50,6 +50,7 @@ class SignupForm extends Component {
           });
         } else {
           console.log('duplicate');
+          console.log(response.data.errmsg)
         }
       });
     }

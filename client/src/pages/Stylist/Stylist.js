@@ -28,7 +28,6 @@ class Stylist extends Component {
     this.setState({
       [name]: value
     });
-    console.log(this.state);
   };
 
   editPricing = id => {
@@ -58,6 +57,23 @@ class Stylist extends Component {
       'licNum': this.state.licNum
     }
     API.updateUser(id, data)
+    .then(
+      res => console.log(res),
+      console.log("res"),
+      console.log(this.state.client),
+      console.log("user")
+    )
+    .catch(err => console.log(err));
+  };
+
+  editPricing = id => {
+    let data = {
+      '_id': id,
+      'hair': this.state.hair,
+      'makeup': this.state.makeup,
+      'nails':this.state.nails
+    }
+    API.updateRates(id, data)
     .then(
       res => console.log(res),
       console.log("res"),
@@ -143,7 +159,7 @@ class Stylist extends Component {
                       </div>
                       <div className="modal-footer">
                         <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <FormBtn data-dismiss="modal" onClick={() => this.editProfile(this.state.stylist._id)}>Save changes</FormBtn>
+                        <FormBtn data-dismiss="modal" onClick={() => this.editPricing(this.state.stylist._id)}>Save changes</FormBtn>
                       </div>
                     </div>
                   </div>
