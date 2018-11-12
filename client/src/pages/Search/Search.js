@@ -13,7 +13,9 @@ class Search extends Component {
     stylists: [],
     emailAddress: "",
     username: "",
-    password: ""
+    password: "",
+    stylistId: "",
+    clientId: this.props.user._id
   };
 
   componentDidMount() {
@@ -40,14 +42,14 @@ class Search extends Component {
     // function to add appt info to mongoose
     console.log('CLICKED')
     console.log(this.state, stylistId)
-    this.props.history.push('/calendar')
+    // this.props.history.push('/calendar')
     const apptInfo = {
       city: this.state.city,
       zipcode: this.state.zipcode,
       dateTime: this.state.dateTime,
       service: this.state.service,
-      clientId: this.props.user._id,
-      stylistId: stylistId
+      clientId: this.state.clientId,
+      stylistId: stylistId    
     }
     API.saveAppt(apptInfo).then(res => {
         console.log(res, "This is the response from appointment info");
