@@ -1,10 +1,11 @@
 import React, { Component } from "react";
-import DeleteBtn from "../../components/DeleteBtn";
+// import DeleteBtn from "../../components/DeleteBtn";
 import API from "../../utils/API";
 import { Link } from "react-router-dom";
 import { Col, Row, Container } from "../../components/Grid";
 import { List, ListItem } from "../../components/List";
 import { Input, FormBtn } from '../../components/Form';
+import Calendar from "../../components/Calendar"
 
 class Client extends Component {
   state = {
@@ -23,9 +24,9 @@ class Client extends Component {
   };
 
   loadAppts = () => {
-    API.getAppts()
+    API.getStylists()
       .then(res =>
-        this.setState({ appointments: res.data })
+        this.setState({ stylists: res.data })
         )
       .catch(err => console.log(err));
   };
@@ -48,11 +49,11 @@ class Client extends Component {
     .catch(err => console.log(err));
   };
 
-  deleteAppt = id => {
-    API.deleteAppt(id)
-      .then(res => this.loadAppts())
-      .catch(err => console.log(err));
-  };
+  // deleteBook = id => {
+  //   API.deleteBook(id)
+  //     .then(res => this.loadBooks())
+  //     .catch(err => console.log(err));
+  // };
 
   handleInputChange = event => {
     const { name, value } = event.target;
@@ -73,12 +74,12 @@ class Client extends Component {
               <List>
                 {this.state.appointments.map(appointment => (
                   <ListItem key={appointment._id}>
-                    <Link to={"/appts/" + appointment._id}>
-                      <strong>
-                        {appointment.dateTime} in {appointment.city}
-                      </strong>
+                    <Link to={"/appoinment/" + appointment._id}>
+                      {/* <strong>
+                        {book.title} by {book.author}
+                      </strong> */}
                     </Link>
-                    <DeleteBtn onClick={() => this.deleteAppt(appointment._id)} />
+                    {/* <DeleteBtn onClick={() => this.deleteBook(book._id)} /> */}
                   </ListItem>
                 ))}
               </List>
@@ -165,6 +166,9 @@ class Client extends Component {
           </div>
           </Col>
         </Row>
+        <br></br>
+        <Calendar />
+        <br></br>
       </Container>
     );
   }
