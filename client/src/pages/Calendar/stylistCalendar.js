@@ -3,7 +3,7 @@ import dateFns from "date-fns";
 import { ClientResponse } from "http";
 // import DeleteBtn from "../../components/DeleteBtn";
 // import Jumbotron from "../../components/Jumbotron";
-// import API from "../../utils/API";
+import API from "../../utils/API";
 // import { Link } from "react-router-dom";
 // import { Col, Row, Container } from "../../components/Grid";
 // import { List, ListItem } from "../../components/List";
@@ -14,8 +14,21 @@ import "./stylistCalendar.css";
 const clients = [ { date: 14, name: "Hardin" } ]
 class Calendar extends React.Component {
   state = {
+    appointments: [],
     currentMonth: new Date(),
     selectedDate: new Date()
+  };
+
+  componentDidMount() {
+    this.loadAppts();
+  };
+
+  loadAppts = () => {
+    API.getAppts()
+      .then(res =>
+        this.setState({ appointments: res.data })
+        )
+      .catch(err => console.log(err));
   };
 
   renderHeader() {

@@ -4,6 +4,7 @@ import { Container, Row, Col } from '../../components/Grid';
 import { Card } from '../../components/Card';
 import { Input, FormBtn } from '../../components/Form';
 import AUTH from '../../utils/AUTH';
+import "./login.css";
 
 class SignupForm extends Component {
 
@@ -68,8 +69,8 @@ class SignupForm extends Component {
 		return (
       <Container>
         <Row>
-          <Col size="md-3"></Col>
-          <Col size="md-6">
+          {/* <Col size="md-3"></Col> */}
+          <Col size="md-5">
             <Card title="Register for GLAMoblie">
               <form style={{marginTop: 10}}>
                 {/* <label htmlFor="username">First name: </label>
@@ -133,7 +134,7 @@ class SignupForm extends Component {
               </form>
             </Card>
           </Col>
-          <Col size="md-3"></Col>
+          <Col size="md-7"></Col>
         </Row>
       </Container>
 		)

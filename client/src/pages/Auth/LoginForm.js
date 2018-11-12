@@ -3,7 +3,7 @@ import { Redirect, Link } from 'react-router-dom';
 import { Container, Row, Col } from '../../components/Grid';
 import { Card } from '../../components/Card';
 import { Input, FormBtn } from '../../components/Form';
-// import "./login.css";
+import "./login.css";
 
 class LoginForm extends Component {
   
@@ -40,8 +40,8 @@ class LoginForm extends Component {
 			return (
 				<Container className="loginPage">
           <Row>
-            <Col size="md-3"></Col>
-            <Col size="md-6">
+            {/* <Col size="md-3"></Col> */}
+            <Col size="md-5">
               <Card title="Login to GLAMobile">
                 <form style={{marginTop: 10}}>
                   <label htmlFor="username">Username: </label>
@@ -70,7 +70,7 @@ class LoginForm extends Component {
                 </form>
               </Card>
             </Col>
-            <Col size="md-3"></Col>
+            <Col size="md-7"></Col>
           </Row>
 				</Container>
 			)
