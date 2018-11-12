@@ -74,7 +74,7 @@ class Client extends Component {
                 {this.state.appointments.map(appointment => (
                   <ListItem key={appointment._id}>
                     <Link to={"/appoinment/" + appointment._id}>
-                      {appointment.month} {appointment.day}, {appointment.year}
+                      {appointment.service} on {appointment.month} {appointment.day}, {appointment.year} at {appointment.time}
                       {/* <strong>
                         {book.title} by {book.author}
                       </strong> */}
