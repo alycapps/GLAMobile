@@ -5,7 +5,7 @@ mongoose.promise = Promise;
 
 // Define userSchema
 const userSchema = new Schema({
-	username: { type: String, unique: false, required: true },
+	username: { type: String, unique: false, required: false },
 	firstName: { type: String, unique: false, required: false },
 	lastName: { type: String, unique: false, required: false },
   password: { type: String, unique: false, required: true },
@@ -14,7 +14,7 @@ const userSchema = new Schema({
   nails: { type: Number, unique: false, required: false},
   hair: { type: Number, unique: false, required: false},
 	makeup: { type: Number, unique: false, required: false},
-	licNum: {type: Number, unique: true, required: false}
+	licNum: { type: Number, unique: false, required: false }
 });
 
 // Define schema methods
