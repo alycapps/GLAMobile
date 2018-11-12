@@ -114,14 +114,15 @@ class Search extends Component {
                     <div className="card-header" id="headingOne" style={{backgroundColor:"#c8b7b5"}}>
                       <h5 className="mb-0">
                         <button className="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                          {stylist.username}
+                          {stylist.firstName} {stylist.lastName}
                         </button>
                       </h5>
                     </div>
                     <div id="collapseOne" className="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
                       <div className="card-body">
-                        {stylist.summary}
-                        Description goes here.
+                        <p>Hair: {stylist.hair}</p>
+                        <p>Makeup: {stylist.makeup}</p>
+                        <p>Nails: {stylist.nails}</p>
                         <FormBtn 
                         data-toggle="modal" 
                         data-target="#exampleModal"

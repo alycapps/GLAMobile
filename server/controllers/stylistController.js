@@ -23,6 +23,14 @@ module.exports = {
       //error handling
       .catch(err => res.status(422).json(err));
   },
+  updateRates: function(req, res) {
+    let data = req.body;
+    console.log(data);
+    db.User.findOneAndUpdate({ _id: data._id }, {$set: {hair: data.hair, makeup: data.makeup, nails: data.nails}}, {new: true})
+      .then(dbModel => res.json(dbModel))
+      //error handling
+      .catch(err => res.status(422).json(err));
+  },
   create: function(req, res) {
     db.User.create(req.body)
       .then(newUser => res.json(newUser))
