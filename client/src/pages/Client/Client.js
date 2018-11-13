@@ -7,6 +7,7 @@ import { Col, Row, Container } from "../../components/Grid";
 import { List, ListItem } from "../../components/List";
 import { Input, FormBtn } from '../../components/Form';
 import Calendar from "../../components/Calendar"
+import ReactDOM from "react-dom";
 
 class Client extends Component {
   state = {
@@ -26,12 +27,29 @@ class Client extends Component {
   loadAppts = () => {
     API.getAppts()
       .then(res =>
-        this.setState({ appointments: res.data })
+        this.setState({ appointments: res.data },
+          this.addtoCalendar)
         )
       .catch(err => console.log(err));
-      console.log(this.state.appointments)
   };
   
+  addtoCalendar = () => {
+    console.log(this.state.appointments)
+    for (const s of document.querySelectorAll(".number")) {
+      for (var i = 0; i < this.state.appointments.length; i++) {
+        if (this.state.appointments[i].clientId == this.state.client._id){
+          if (s.textContent.includes(this.state.appointments[i].day)) {
+            console.log("appt on day " + s.textContent)
+            let a = document.createElement("span");
+            a.innerHTML = this.state.appointments[i].time + "<br />";
+            let e = ReactDOM.findDOMNode(s).parentNode;            
+            e.insertBefore(a,s);
+          }
+        }
+      }
+    }
+  };
+
   editProfile = id => {
     let data = {
       '_id': id,

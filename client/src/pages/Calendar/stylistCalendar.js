@@ -11,10 +11,12 @@ import API from "../../utils/API";
 // import { Input, TextArea, FormBtn } from "../../components/Form";
 // import { Input, FormBtn } from "../../components/Form";
 import "./stylistCalendar.css";
+import ReactDOM from "react-dom";
 
 // const clients = [ { date: 14, name: "Hardin" } ]
 class Calendar extends React.Component {
   state = {
+    stylist: this.props.user,
     appointments: [],
     currentMonth: new Date(),
     selectedDate: new Date()
@@ -27,15 +29,35 @@ class Calendar extends React.Component {
   loadAppts = () => {
     API.getAppts()
       .then(res =>
-        this.setState({ appointments: res.data })
+        this.setState(
+          { 
+            appointments: res.data 
+          }, 
+          this.addtoCalendar
         )
+      )
       .catch(err => console.log(err));
+  };
+
+  addtoCalendar = () => {
     console.log(this.state.appointments)
+    for (const s of document.querySelectorAll(".number")) {
+      for (var i = 0; i < this.state.appointments.length; i++) {
+        if (this.state.appointments[i].stylistId == this.state.stylist._id){
+          if (s.textContent.includes(this.state.appointments[i].day)) {
+            console.log("appt on day " + s.textContent)
+            let a = document.createElement("span");
+            a.innerHTML = this.state.appointments[i].time + "<br />";
+            let e = ReactDOM.findDOMNode(s).parentNode;            
+            e.insertBefore(a,s);
+          }
+        }
+      }
+    }
   };
 
   renderHeader() {
     const dateFormat = "MMMM YYYY";
-
     return (
       <div className="header row flex-middle">
         <div className="col col-start">
