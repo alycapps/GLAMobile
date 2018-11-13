@@ -1,5 +1,7 @@
 import React from "react";
 import dateFns from "date-fns";
+import { Card } from '../../components/Card';
+
 import { ClientResponse } from "http";
 // import DeleteBtn from "../../components/DeleteBtn";
 // import Jumbotron from "../../components/Jumbotron";
