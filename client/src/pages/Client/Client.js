@@ -17,7 +17,8 @@ class Client extends Component {
     firstName: this.props.user.firstName,
     lastName: this.props.user.lastName,
     emailAddress: this.props.user.emailAddress,
-    username: this.props.user.username
+    username: this.props.user.username,
+    currentMonth: new Date(),
   };
 
   componentDidMount() {
@@ -32,18 +33,28 @@ class Client extends Component {
         )
       .catch(err => console.log(err));
   };
+
+  myApptLoad = () => {
+    for (let i=0; i<this.state.appointments.length; i++) {
+      if (this.state.appointments[i].month == (this.state.currentMonth.getMonth() + 1) ) {
+      
+      }
+    }
+  }
   
   addtoCalendar = () => {
     console.log(this.state.appointments)
     for (const s of document.querySelectorAll(".number")) {
       for (var i = 0; i < this.state.appointments.length; i++) {
         if (this.state.appointments[i].clientId == this.state.client._id){
-          if (s.textContent.includes(this.state.appointments[i].day)) {
-            console.log("appt on day " + s.textContent)
-            let a = document.createElement("span");
-            a.innerHTML = this.state.appointments[i].time + "<br />";
-            let e = ReactDOM.findDOMNode(s).parentNode;            
-            e.insertBefore(a,s);
+          if (this.state.appointments[i].month == (this.state.currentMonth.getMonth() + 1) ) {  
+            if (s.textContent.includes(this.state.appointments[i].day)) {
+              console.log("appt on day " + s.textContent)
+              let a = document.createElement("span");
+              a.innerHTML = this.state.appointments[i].time + " " + this.state.appointments[i].service + "<br />";
+              let e = ReactDOM.findDOMNode(s).parentNode;            
+              e.insertBefore(a,s);
+            }
           }
         }
       }
@@ -93,13 +104,10 @@ class Client extends Component {
               <List>
                 {this.state.appointments.map(appointment => (
                   <ListItem key={appointment._id}>
-                    <Link to={"/appoinment/" + appointment._id}>
-                      {appointment.service} on {appointment.month} {appointment.day}, {appointment.year} at {appointment.time}
-                      {/* <strong>
-                        {book.title} by {book.author}
-                      </strong> */}
-                    </Link>
+                    <p>{appointment.service} on {appointment.month}/{appointment.day}/{appointment.year} at {appointment.time}</p>
+                    <p>{appointment.address}, {appointment.city} {appointment.zipcode}
                     <DeleteBtn onClick={() => this.deleteAppt(appointment._id)} />
+                    </p> 
                   </ListItem>
                 ))}
               </List>

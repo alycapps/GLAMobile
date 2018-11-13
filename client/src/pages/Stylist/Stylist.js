@@ -3,9 +3,10 @@ import {Card} from "../../components/Card";
 import API from "../../utils/API";
 import { Link } from "react-router-dom";
 import { Col, Row, Container } from "../../components/Grid";
-// import { List, ListItem } from "../../components/List";
+import { List, ListItem } from "../../components/List";
 // import { Input, TextArea, FormBtn } from "../../components/Form";
 import { Input, FormBtn } from "../../components/Form";
+import DeleteBtn from "../../components/DeleteBtn";
 
 class Stylist extends Component {
   state = {
@@ -19,7 +20,27 @@ class Stylist extends Component {
     licNum: this.props.user.licNum,
     hair: this.props.user.hair,
     nails: this.props.user.nails,
-    makeup: this.props.user.makeup
+    makeup: this.props.user.makeup,
+    appointments: []
+  };
+
+  componentDidMount() {
+    this.loadAppts();
+  };
+
+  loadAppts = () => {
+    API.getAppts()
+      .then(res =>
+        this.setState({ appointments: res.data },
+          this.addtoCalendar)
+        )
+      .catch(err => console.log(err));
+  };
+
+  deleteAppt = id => {
+    API.deleteAppt(id)
+      .then(res => this.loadAppts())
+      .catch(err => console.log(err));
   };
 
   handleInputChange = event => {
@@ -253,6 +274,8 @@ class Stylist extends Component {
             </Col>  
           </div>
         </Row>
+        <br></br>
+        
       </Container> 
     );
   }

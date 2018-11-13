@@ -1,13 +1,13 @@
 import React from "react";
 import dateFns from "date-fns";
-// import { Card } from '../../components/Card';
+import { Card } from '../../components/Card';
 // import { ClientResponse } from "http";
-// import DeleteBtn from "../../components/DeleteBtn";
+import DeleteBtn from "../../components/DeleteBtn";
 // import Jumbotron from "../../components/Jumbotron";
 import API from "../../utils/API";
 // import { Link } from "react-router-dom";
-// import { Col, Row, Container } from "../../components/Grid";
-// import { List, ListItem } from "../../components/List";
+import { Col, Row, Container } from "../../components/Grid";
+import { List, ListItem } from "../../components/List";
 // import { Input, TextArea, FormBtn } from "../../components/Form";
 // import { Input, FormBtn } from "../../components/Form";
 import "./stylistCalendar.css";
@@ -24,6 +24,8 @@ class Calendar extends React.Component {
 
   componentDidMount() {
     this.loadAppts();
+    console.log(this.state.currentMonth.getMonth());
+    console.log("state")
   };
 
   loadAppts = () => {
@@ -44,12 +46,15 @@ class Calendar extends React.Component {
     for (const s of document.querySelectorAll(".number")) {
       for (var i = 0; i < this.state.appointments.length; i++) {
         if (this.state.appointments[i].stylistId == this.state.stylist._id){
-          if (s.textContent.includes(this.state.appointments[i].day)) {
-            console.log("appt on day " + s.textContent)
-            let a = document.createElement("span");
-            a.innerHTML = this.state.appointments[i].time + "<br />";
-            let e = ReactDOM.findDOMNode(s).parentNode;            
-            e.insertBefore(a,s);
+          if (this.state.appointments[i].month == (this.state.currentMonth.getMonth() + 1) ) {
+            if (s.textContent.includes(this.state.appointments[i].day)) {
+              console.log("appt on day " + s.textContent)
+              console.log("appt on day " + s.textContent)
+              let a = document.createElement("span");
+              a.innerHTML = this.state.appointments[i].time + " " + this.state.appointments[i].service + "<br />";
+              let e = ReactDOM.findDOMNode(s).parentNode;            
+              e.insertBefore(a,s);
+            }
           }
         }
       }
@@ -156,11 +161,38 @@ class Calendar extends React.Component {
 
   render() {
     return (
-      <div className="calendar">
-        {this.renderHeader()}
-        {this.renderDays()}
-        {this.renderCells()}
-      </div>
+      <Container>
+        <Row>
+          <div className="calendar">
+            <Card title="Calendar">
+              {this.renderHeader()}
+              {this.renderDays()}
+              {this.renderCells()}
+            </Card>
+          </div>
+        </Row>
+        <br></br>
+        <Row>
+          <Col size="md-12">
+            <Card title="Upcoming Appointments">
+              {this.state.appointments.length ? (
+                <List>
+                  {this.state.appointments.map(appointment => (
+                    <ListItem key={appointment._id}>
+                      <p>{appointment.service} on {appointment.month}/{appointment.day}/{appointment.year} at {appointment.time}</p>
+                      <p>{appointment.address}, {appointment.city} {appointment.zipcode}
+                      <DeleteBtn onClick={() => this.deleteAppt(appointment._id)} />
+                      </p> 
+                    </ListItem>
+                  ))}
+                </List>
+              ) : (
+                <h3>No Appointments Scheduled</h3>
+              )}
+            </Card>
+          </Col>
+        </Row>
+      </Container>
     );
   }
 }
