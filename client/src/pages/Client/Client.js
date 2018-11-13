@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 // import DeleteBtn from "../../components/DeleteBtn";
+import {Card} from "../../components/Card";
 import API from "../../utils/API";
 import { Link } from "react-router-dom";
 import { Col, Row, Container } from "../../components/Grid";
@@ -95,26 +96,27 @@ class Client extends Component {
           </Col>
           <Col size="md-5 sm-12">
           <div>
-            <h3>My Profile</h3>
-            First Name: {this.state.firstName ? 
-              (this.state.firstName): 
+            <Card title="My Profile">
+              First Name: {this.state.firstName ? 
+                (this.state.firstName): 
+                (<span style={{color:"red"}}>Unknown -- Please Add</span>)}
+              <br></br>
+              Last Name: {this.state.lastName ? 
+                (this.state.lastName): 
+                (<span style={{color:"red"}}>Unknown -- Please Add</span>)}
+              <br></br>
+              Username: {this.state.username ? 
+              (this.state.username): 
               (<span style={{color:"red"}}>Unknown -- Please Add</span>)}
-            <br></br>
-            Last Name: {this.state.lastName ? 
-              (this.state.lastName): 
-              (<span style={{color:"red"}}>Unknown -- Please Add</span>)}
-            <br></br>
-            Username: {this.state.username ? 
-            (this.state.username): 
-            (<span style={{color:"red"}}>Unknown -- Please Add</span>)}
-            <br></br>
-            Email: {this.state.emailAddress ? 
-              (this.state.emailAddress): 
-              (<span style={{color:"red"}}>Unknown -- Please Add</span>)}
-            <br></br>
-            <FormBtn data-toggle="modal" data-target="#exampleModal">
-              Edit Profile
-            </FormBtn>
+              <br></br>
+              Email: {this.state.emailAddress ? 
+                (this.state.emailAddress): 
+                (<span style={{color:"red"}}>Unknown -- Please Add</span>)}
+              <br></br>
+              <FormBtn data-toggle="modal" data-target="#exampleModal">
+                Edit Profile
+              </FormBtn>
+              </Card>
             <div className="modal fade" id="exampleModal" tabIndex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
               <div className="modal-dialog" role="document">
                 <div className="modal-content">
@@ -167,7 +169,9 @@ class Client extends Component {
           </Col>
         </Row>
         <br></br>
-        <Calendar />
+        <Card title="Upcoming Appointments">
+          <Calendar />
+        </Card>
         <br></br>
       </Container>
     );
