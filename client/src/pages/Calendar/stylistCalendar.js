@@ -16,6 +16,7 @@ import ReactDOM from "react-dom";
 // const clients = [ { date: 14, name: "Hardin" } ]
 class Calendar extends React.Component {
   state = {
+    stylist: this.props.user,
     appointments: [],
     currentMonth: new Date(),
     selectedDate: new Date()
@@ -42,12 +43,14 @@ class Calendar extends React.Component {
     console.log(this.state.appointments)
     for (const s of document.querySelectorAll(".number")) {
       for (var i = 0; i < this.state.appointments.length; i++) {
-        if (s.textContent.includes(this.state.appointments[i].day)) {
-          console.log("appt on day " + s.textContent)
-          let a = document.createElement("span");
-          a.innerHTML = this.state.appointments[i].time + "<br />";
-          let e = ReactDOM.findDOMNode(s).parentNode;
-          e.insertBefore(a,s);
+        if (this.state.appointments[i].stylistId == this.state.stylist._id){
+          if (s.textContent.includes(this.state.appointments[i].day)) {
+            console.log("appt on day " + s.textContent)
+            let a = document.createElement("span");
+            a.innerHTML = this.state.appointments[i].time + "<br />";
+            let e = ReactDOM.findDOMNode(s).parentNode;            
+            e.insertBefore(a,s);
+          }
         }
       }
     }
