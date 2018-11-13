@@ -54,7 +54,6 @@ class Calendar extends React.Component {
         }
       }
     }
-
   };
 
   renderHeader() {
