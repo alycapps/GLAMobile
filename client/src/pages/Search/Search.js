@@ -152,18 +152,18 @@ class Search extends Component {
                                   <br></br>
                                   <select name="month" onChange={this.handleInputChange} >
                                     <option name= "month" value="none">Please select Month</option>
-                                    <option name= "month" value="january">January</option>
-                                    <option name= "month" value="february">February</option>
-                                    <option name= "month" value="march">March</option>
-                                    <option name= "month" value="april">April</option>
-                                    <option name= "month" value="may">May</option>
-                                    <option name= "month" value="june">June</option>
-                                    <option name= "month" value="july">July</option>
-                                    <option name= "month" value="august">August</option>
-                                    <option name= "month" value="september">September</option>
-                                    <option name= "month" value="october">October</option>
-                                    <option name= "month" value="november">November</option>
-                                    <option name= "month" value="december">December</option>
+                                    <option name= "month" value="1">January</option>
+                                    <option name= "month" value="2">February</option>
+                                    <option name= "month" value="3">March</option>
+                                    <option name= "month" value="4">April</option>
+                                    <option name= "month" value="5">May</option>
+                                    <option name= "month" value="6">June</option>
+                                    <option name= "month" value="7">July</option>
+                                    <option name= "month" value="8">August</option>
+                                    <option name= "month" value="9">September</option>
+                                    <option name= "month" value="10">October</option>
+                                    <option name= "month" value="11">November</option>
+                                    <option name= "month" value="12">December</option>
                                   </select>
                                   <br></br>
                                   <label htmlFor="day">Day: </label>
@@ -204,12 +204,6 @@ class Search extends Component {
                                   </select>
                                   <br></br>
                                   <label htmlFor="year">Year: </label>
-                                  {/* <Input
-                                    type="number"
-                                    name="year"
-                                    onChange={this.handleInputChange}
-                                    placeholder= "Year"
-                                  /> */}
                                   <br></br>
                                   <select name="year" onChange={this.handleInputChange} >
                                     <option name= "year" value="none">Please select Year</option>
