@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-// import DeleteBtn from "../../components/DeleteBtn";
+import DeleteBtn from "../../components/DeleteBtn";
 import {Card} from "../../components/Card";
 import API from "../../utils/API";
 import { Link } from "react-router-dom";
@@ -29,6 +29,7 @@ class Client extends Component {
         this.setState({ appointments: res.data })
         )
       .catch(err => console.log(err));
+      console.log(this.state.appointments)
   };
   
   editProfile = id => {
@@ -49,11 +50,11 @@ class Client extends Component {
     .catch(err => console.log(err));
   };
 
-  // deleteBook = id => {
-  //   API.deleteBook(id)
-  //     .then(res => this.loadBooks())
-  //     .catch(err => console.log(err));
-  // };
+  deleteAppt = id => {
+    API.deleteAppt(id)
+      .then(res => this.loadAppts())
+      .catch(err => console.log(err));
+  };
 
   handleInputChange = event => {
     const { name, value } = event.target;
@@ -80,7 +81,7 @@ class Client extends Component {
                         {book.title} by {book.author}
                       </strong> */}
                     </Link>
-                    {/* <DeleteBtn onClick={() => this.deleteBook(book._id)} /> */}
+                    <DeleteBtn onClick={() => this.deleteAppt(appointment._id)} />
                   </ListItem>
                 ))}
               </List>

@@ -1,6 +1,6 @@
 import React from "react";
 import dateFns from "date-fns";
-import { ClientResponse } from "http";
+// import { ClientResponse } from "http";
 // import DeleteBtn from "../../components/DeleteBtn";
 // import Jumbotron from "../../components/Jumbotron";
 // import API from "../../utils/API";
@@ -11,7 +11,6 @@ import { ClientResponse } from "http";
 // import { Input, FormBtn } from "../../components/Form";
 import "./Calendar.css";
 
-const clients = [ { date: 14, name: "Hardin" } ]
 class Calendar extends React.Component {
   state = {
     currentMonth: new Date(),
