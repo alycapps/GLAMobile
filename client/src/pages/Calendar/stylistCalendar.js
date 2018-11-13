@@ -1,8 +1,7 @@
 import React from "react";
 import dateFns from "date-fns";
-import { Card } from '../../components/Card';
-
-import { ClientResponse } from "http";
+// import { Card } from '../../components/Card';
+// import { ClientResponse } from "http";
 // import DeleteBtn from "../../components/DeleteBtn";
 // import Jumbotron from "../../components/Jumbotron";
 import API from "../../utils/API";
@@ -13,7 +12,7 @@ import API from "../../utils/API";
 // import { Input, FormBtn } from "../../components/Form";
 import "./stylistCalendar.css";
 
-const clients = [ { date: 14, name: "Hardin" } ]
+// const clients = [ { date: 14, name: "Hardin" } ]
 class Calendar extends React.Component {
   state = {
     appointments: [],
@@ -31,6 +30,7 @@ class Calendar extends React.Component {
         this.setState({ appointments: res.data })
         )
       .catch(err => console.log(err));
+    console.log(this.state.appointments)
   };
 
   renderHeader() {
